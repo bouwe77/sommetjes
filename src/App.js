@@ -55,7 +55,7 @@ function App() {
 }
 
 function Exercise({ name, assignments, back }) {
-  const [currentAssignmentIndex, setCurrentAssignmentIndex] = useState(0);
+  const [currentAssignmentIndex] = useState(0);
   const [answer, setAnswer] = useState(null);
   const [answered, setAnswered] = useState(false);
   const [isCorrect, setIsCorrect] = useState(false);
