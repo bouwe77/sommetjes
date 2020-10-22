@@ -1,33 +1,39 @@
-import React, { useEffect, useState } from "react";
+import React, { useCallback, useState } from "react";
 
-export default function NumberPad({ setNumber }) {
-  const [numberAsString, setNumberAsString] = useState(null);
-
-  function handleNumberClick(buttonValue) {
-    const newNumberAsString = `${
-      numberAsString ? numberAsString : ""
-    }${buttonValue}`;
-    if (isNaN(parseFloat(newNumberAsString))) return;
-    setNumberAsString(newNumberAsString);
-  }
-
-  function handleClearClick() {
-    setNumberAsString(null);
-  }
-
-  useEffect(() => {
-    setNumber(numberAsString ? numberAsString : null);
-  }, [numberAsString, setNumber]);
-
+export default function NumberPad({ setNumber, clear }) {
   return (
     <div>
       {["1", "2", "3", "4", "5", "6", "7", "8", "9"].map((number) => (
         <div key={number}>
-          <button onClick={() => handleNumberClick(number)}>{number}</button>
+          <button onClick={() => setNumber(number)}>{number}</button>
         </div>
       ))}
-      <button onClick={() => handleNumberClick("0")}>0</button>
-      <button onClick={handleClearClick}>CLR</button>
+      <button onClick={() => setNumber("0")}>0</button>
+      <button onClick={clear}>CLR</button>
     </div>
   );
+}
+
+export function useNumberConcatenater(cb) {
+  const [numberAsString, setNumberAsString] = useState(null);
+
+  function concatenateNumber(number) {
+    const newNumberAsString = `${
+      numberAsString ? numberAsString : ""
+    }${number}`;
+
+    // Validate is numeric and is max 6 characters long.
+    if (isNaN(parseFloat(newNumberAsString))) return;
+    if (newNumberAsString.length > 6) return;
+
+    setNumberAsString(newNumberAsString);
+    cb(newNumberAsString);
+  }
+
+  const clearNumber = useCallback(() => {
+    setNumberAsString(null);
+    cb(null);
+  }, [cb]);
+
+  return { concatenateNumber, clearNumber };
 }
