@@ -2,15 +2,25 @@ import React, { useCallback, useState } from "react";
 
 export default function NumberPad({ setNumber, clear }) {
   return (
-    <div>
-      {["1", "2", "3", "4", "5", "6", "7", "8", "9"].map((number) => (
-        <div key={number}>
-          <button onClick={() => setNumber(number)}>{number}</button>
-        </div>
+    <div className="numberpad-container">
+      {["1", "2", "3", "4", "5", "6", "7", "8", "9"].map((number, index) => (
+        <span key={number}>
+          <Button onClick={() => setNumber(number)}>{number}</Button>
+          {(index + 1) % 3 === 0 && <br />}
+        </span>
       ))}
-      <button onClick={() => setNumber("0")}>0</button>
-      <button onClick={clear}>CLR</button>
+      <Button style={{ visibility: "hidden" }}>0</Button>
+      <Button onClick={() => setNumber("0")}>0</Button>
+      <Button onClick={clear}>WIS</Button>
     </div>
+  );
+}
+
+function Button(props) {
+  return (
+    <button className="number-button" {...props}>
+      {props.children}
+    </button>
   );
 }
 

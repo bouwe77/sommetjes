@@ -40,13 +40,15 @@ export default function Exercise({ name, questions, quit }) {
 
   return (
     <div>
-      <h1>{name}</h1>
+      <div className="exercise-title">
+        <h1>{name}</h1>
+      </div>
 
       {finished ? (
         <div>
           <div>OK, klaar...</div>
-          <button onClick={tryAgain}>Try again</button>
-          <button onClick={quit}>Quit</button>
+          <button onClick={tryAgain}>Deze oefening opnieuw</button>
+          <button onClick={quit}>Andere oefening kiezen</button>
         </div>
       ) : (
         <div>
@@ -54,7 +56,7 @@ export default function Exercise({ name, questions, quit }) {
             question={questions[currentQuestionIndex]}
             answerResult={answerResult}
           />
-          <button onClick={quit}>Quit</button>
+          <button onClick={quit}>Andere oefening kiezen</button>
         </div>
       )}
     </div>

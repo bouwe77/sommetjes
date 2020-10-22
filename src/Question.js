@@ -24,9 +24,11 @@ export default function Question({ question, answerResult }) {
 
   return (
     <>
-      <div>{question.question}</div>
+      <div className="question">
+        <h1>{question.question}</h1>
+      </div>
 
-      <div style={{ height: "200px", width: "200px", backgroundColor: "Pink" }}>
+      <div className="answer">
         <h1>{answer}</h1>
       </div>
 

@@ -1,0 +1,47 @@
+.exercise-button {
+  width: 100px;
+  height: 100px;
+  margin: 10px;
+}
+
+h1 {
+  display: inline;
+}
+
+.exercise-title {
+  width: 300px;
+  height: 40px;
+  margin: 10px;
+  text-align: center;
+  color: darkblue;
+}
+
+.question {
+  width: 300px;
+  height: 40px;
+  border: 1px solid #efefef;
+  margin: 10px;
+  text-align: center;
+}
+
+.answer {
+  width: 300px;
+  height: 40px;
+  border: 1px solid #efefef;
+  margin: 10px;
+  padding: 20px 0px;
+  text-align: center;
+}
+
+.numberpad-container {
+  width: 300px;
+  border: 1px solid #efefef;
+  margin: 10px;
+  text-align: center;
+}
+
+.number-button {
+  width: 40px;
+  height: 40px;
+  margin: 10px;
+}

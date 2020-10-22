@@ -27,7 +27,10 @@ function App() {
         <Exercises>
           {Object.keys(exercises).map((exerciseName) => (
             <div key={exerciseName}>
-              <button onClick={() => selectExercise(exerciseName)}>
+              <button
+                onClick={() => selectExercise(exerciseName)}
+                className="exercise-button"
+              >
                 {exerciseName}
               </button>
             </div>
