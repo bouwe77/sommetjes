@@ -16,7 +16,7 @@ function App() {
   }
 
   return (
-    <>
+    <div className="container">
       {selectedExerciseName ? (
         <Exercise
           name={selectedExerciseName}
@@ -24,20 +24,9 @@ function App() {
           quit={deselectExercise}
         />
       ) : (
-        <Exercises>
-          {Object.keys(exercises).map((exerciseName) => (
-            <div key={exerciseName}>
-              <button
-                onClick={() => selectExercise(exerciseName)}
-                className="exercise-button"
-              >
-                {exerciseName}
-              </button>
-            </div>
-          ))}
-        </Exercises>
+        <Exercises exercises={exercises} selectExercise={selectExercise} />
       )}
-    </>
+    </div>
   );
 }
 

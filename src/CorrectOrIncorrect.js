@@ -1,5 +1,10 @@
 import React from "react";
+import Modal from "./Modal";
 
 export default function CorrectOrIncorrect({ isCorrect }) {
-  return <h1>{isCorrect ? "YESSS!!!" : "Oops..."}</h1>;
+  return (
+    <Modal>
+      <div className="correct-incorrect">{isCorrect ? <>✅</> : <>❌</>}</div>
+    </Modal>
+  );
 }

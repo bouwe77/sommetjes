@@ -1,7 +1,9 @@
-.exercise-button {
-  width: 100px;
-  height: 100px;
-  margin: 10px;
+body {
+}
+
+.container {
+  margin: auto;
+  width: 400px;
 }
 
 h1 {
@@ -12,8 +14,22 @@ button:focus {
   outline: 0;
 }
 
+/* CSS grid generated with https://cssgrid-generator.netlify.app */
+.exercises {
+  text-align: center;
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  grid-template-rows: repeat(2, 1fr);
+  grid-column-gap: 10px;
+  grid-row-gap: 10px;
+}
+
+.exercise-button {
+  width: 100px;
+  height: 100px;
+}
+
 .exercise-title {
-  width: 300px;
   height: 40px;
   margin: 10px;
   text-align: center;
@@ -21,7 +37,6 @@ button:focus {
 }
 
 .question {
-  width: 300px;
   height: 40px;
   border: 1px solid #efefef;
   margin: 10px;
@@ -29,7 +44,6 @@ button:focus {
 }
 
 .answer {
-  width: 300px;
   height: 40px;
   border: 1px solid #efefef;
   margin: 10px;
@@ -49,14 +63,19 @@ button:focus {
   margin: 10px;
 }
 
+.correct-incorrect {
+  text-align: center;
+  font-size: 100px;
+}
+
 .answer-input {
-  width: 300px;
   border: 1px solid #efefef;
   margin: 10px;
   text-align: center;
 }
 
 .exercise-footer {
+  display: flex;
   margin: 10px;
 }
 
@@ -71,11 +90,38 @@ button:focus {
 }
 
 .results {
-  width: 300px;
   margin: 10px;
   text-align: center;
 }
 
 .results h2 {
   display: inline;
+}
+
+.modal {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(0, 0, 0, 0.6);
+}
+
+.modal-main {
+  position: fixed;
+  background: white;
+  width: 300px;
+  height: auto;
+  top: 15%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  padding: 10px;
+}
+
+.display-block {
+  display: block;
+}
+
+.display-none {
+  display: none;
 }

@@ -14,4 +14,9 @@ export default {
     { question: "9 - 6", answer: "3" },
     { question: "18 - 3", answer: "15" },
   ],
+  "Oefening 4": [
+    { question: "12 - 1", answer: "11" },
+    { question: "9 - 6", answer: "3" },
+    { question: "18 - 3", answer: "15" },
+  ],
 };
