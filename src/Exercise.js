@@ -19,8 +19,8 @@ export default function Exercise({ name, questions, quit }) {
     bonus2: 0,
     total: questions.length,
   });
-  const [superBonusPoints, resetSuperBonus] = useBonusPoints(1, 5);
-  const [extraBonusPoints, resetExtraBonus] = useBonusPoints(1, 10);
+  const [bonus5Seconds, resetBonus5Seconds] = useBonusPoints(1, 5);
+  const [bonus10Seconds, resetBonus10Seconds] = useBonusPoints(1, 10);
 
   const indexNr = Number(currentQuestionIndex);
   const canGoNext = indexNr < questions.length - 1;
@@ -31,9 +31,9 @@ export default function Exercise({ name, questions, quit }) {
   }, [setCurrentQuestionIndex, name]);
 
   useEffect(() => {
-    resetSuperBonus();
-    resetExtraBonus();
-  }, [currentQuestionIndex, resetSuperBonus, resetExtraBonus]);
+    resetBonus5Seconds();
+    resetBonus10Seconds();
+  }, [currentQuestionIndex, resetBonus5Seconds, resetBonus10Seconds]);
 
   useInterval(() => {
     if (canGoNext) {
@@ -49,8 +49,8 @@ export default function Exercise({ name, questions, quit }) {
     const updatedResults = { ...results };
 
     if (isCorrect) {
-      updatedResults.bonus1 = results.bonus1 + superBonusPoints;
-      updatedResults.bonus2 = results.bonus2 + extraBonusPoints;
+      updatedResults.bonus1 = results.bonus1 + bonus5Seconds;
+      updatedResults.bonus2 = results.bonus2 + bonus10Seconds;
       updatedResults.correct = results.correct + 1;
     } else updatedResults.incorrect = results.incorrect + 1;
 
