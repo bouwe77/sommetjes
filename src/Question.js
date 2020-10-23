@@ -2,7 +2,7 @@ import React, { useEffect, useState } from "react";
 import CorrectOrIncorrect from "./CorrectOrIncorrect";
 import NumberPad, { useNumberConcatenater } from "./NumberPad";
 
-export default function Question({ question, answerResult }) {
+export default function Question({ question, answerGiven }) {
   const [answered, setAnswered] = useState(false);
   const [isCorrect, setIsCorrect] = useState(false);
   const [answer, setAnswer] = useState(null);
@@ -19,7 +19,7 @@ export default function Question({ question, answerResult }) {
     setAnswered(true);
     const isCorrect = answer === question.answer;
     setIsCorrect(isCorrect);
-    answerResult(isCorrect);
+    answerGiven(isCorrect);
   }
 
   return (

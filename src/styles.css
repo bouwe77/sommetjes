@@ -8,6 +8,10 @@ h1 {
   display: inline;
 }
 
+button:focus {
+  outline: 0;
+}
+
 .exercise-title {
   width: 300px;
   height: 40px;
@@ -64,4 +68,14 @@ h1 {
   text-decoration: underline;
   cursor: pointer;
   margin-right: 15px;
+}
+
+.results {
+  width: 300px;
+  margin: 10px;
+  text-align: center;
+}
+
+.results h2 {
+  display: inline;
 }
