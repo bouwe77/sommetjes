@@ -7,7 +7,7 @@ export default function Exercises({ exercises, selectExercise }) {
         <span key={exerciseName}>
           <button
             onClick={() => selectExercise(exerciseName)}
-            className="exercise-button"
+            className={`exercise-button variant-${(index % 5) + 1}`}
           >
             {exerciseName}
           </button>

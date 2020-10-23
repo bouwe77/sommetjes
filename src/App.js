@@ -33,6 +33,11 @@ function App() {
       ) : (
         <Exercises exercises={exercises} selectExercise={selectExercise} />
       )}
+
+      <footer>
+        <hr />
+        <span className="footer-text">gemaakt door Bouwe ❤️</span>
+      </footer>
     </div>
   );
 }

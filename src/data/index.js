@@ -1,22 +1,22 @@
 export default {
-  "Oefening 1": [
+  "Optellen onder de 10": [
     { question: "1 + 1", answer: "2" },
     { question: "1 + 2", answer: "3" },
     { question: "3 + 2", answer: "5" },
   ],
-  "Oefening 2": [
-    { question: "12 + 10", answer: "22" },
-    { question: "32 + 10", answer: "42" },
-    { question: "72 + 10", answer: "82" },
+  "Optellen onder de 20": [
+    { question: "7 + 9", answer: "16" },
+    { question: "18 + 1", answer: "19" },
+    { question: "13 + 2", answer: "15" },
   ],
-  "Oefening 3": [
-    { question: "12 - 1", answer: "11" },
+  "Aftrekken onder de 10": [
+    { question: "2 - 1", answer: "1" },
     { question: "9 - 6", answer: "3" },
-    { question: "18 - 3", answer: "15" },
+    { question: "8 - 3", answer: "5" },
   ],
-  "Oefening 4": [
-    { question: "12 - 1", answer: "11" },
-    { question: "9 - 6", answer: "3" },
+  "Aftrekken onder de 20": [
+    { question: "20 - 1", answer: "19" },
+    { question: "19 - 16", answer: "3" },
     { question: "18 - 3", answer: "15" },
   ],
 };
