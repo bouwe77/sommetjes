@@ -27,8 +27,12 @@ h1 {
   display: inline;
 }
 
+a,
 .button-as-link {
   color: #62c370ff;
+}
+
+.button-as-link {
   background: none !important;
   border: none;
   padding: 0 !important;
@@ -198,7 +202,7 @@ button:focus {
 
 footer {
   text-align: right;
-  margin-top: 20px;
+  margin: 20px 0px;
 }
 
 footer hr {
