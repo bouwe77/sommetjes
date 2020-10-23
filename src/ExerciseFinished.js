@@ -3,7 +3,7 @@ import React from "react";
 export default function ExerciseFinished({ results }) {
   return (
     <div className="results">
-      <h1>Goed gedaan!</h1>
+      Goed gedaan!
       <br />
       <br />
       <h2>
