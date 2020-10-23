@@ -4,7 +4,11 @@ import Modal from "./Modal";
 export default function CorrectOrIncorrect({ isCorrect }) {
   return (
     <Modal>
-      <div className="correct-incorrect">{isCorrect ? <>✅</> : <>❌</>}</div>
+      {isCorrect ? (
+        <div className="correct">Correct!</div>
+      ) : (
+        <div className="incorrect">Helaas...</div>
+      )}
     </Modal>
   );
 }

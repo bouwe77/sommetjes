@@ -40,7 +40,7 @@ export default function Exercise({ name, questions, quit }) {
       ? { ...results, correct: results.correct + 1 }
       : { ...results, incorrect: results.incorrect + 1 };
     setResults(updatedResults);
-    setTimeout(600);
+    setTimeout(1000);
   }
 
   function tryAgain() {
@@ -61,10 +61,10 @@ export default function Exercise({ name, questions, quit }) {
           <ExerciseFinished results={results} />
 
           <div className="exercise-footer">
-            <button className="exercise-footer-button" onClick={tryAgain}>
+            <button className="button-as-link" onClick={tryAgain}>
               Deze oefening opnieuw
             </button>
-            <button className="exercise-footer-button" onClick={quit}>
+            <button className="button-as-link" onClick={quit}>
               Andere oefening kiezen
             </button>
           </div>
@@ -76,7 +76,7 @@ export default function Exercise({ name, questions, quit }) {
             answerGiven={answerGiven}
           />
           <div className="exercise-footer">
-            <button className="exercise-footer-button" onClick={quit}>
+            <button className="button-as-link" onClick={quit}>
               Andere oefening kiezen
             </button>
           </div>

@@ -1,6 +1,20 @@
+/*
+Pallette: https://coolors.co/c2f9bb-9ad1d4-62c370-cc3363-20063b 
+--tea-green: #c2f9bbff;
+--powder-blue: #9ad1d4ff;
+--emerald: #62c370ff;
+--dogwood-rose: #cc3363ff;
+--russian-violet: #20063bff;
+*/
+
 body {
   margin: 0;
   padding: 0;
+}
+
+* {
+  font-family: "Open Sans", sans-serif;
+  color: #20063bff;
 }
 
 .container {
@@ -13,17 +27,47 @@ h1 {
   display: inline;
 }
 
+.button-as-link {
+  color: #62c370ff;
+  background: none !important;
+  border: none;
+  padding: 0 !important;
+  text-decoration: none;
+  cursor: pointer;
+  margin-right: 15px;
+}
+
+.button-as-link:hover {
+  text-decoration: underline;
+}
+
 button:focus {
   outline: 0;
 }
 
 .header {
-  background-color: #98d2eb;
+  display: flex;
+  background-color: #20063bff;
   width: 100%;
-  text-align: center;
-  font-size: 30px;
+  padding-left: 10px;
+  margin-bottom: 10px;
+}
+
+.logo {
+  font-family: "The Girl Next Door";
+  color: #62c370ff;
+  font-size: 40px;
+  width: 250px;
+}
+
+.nav {
+  text-align: right;
+  flex: 1; /* which means: grow to rest of container */
   padding: 20px 0px;
-  margin-bottom: 20px;
+}
+
+.nav button {
+  color: #9ad1d4ff;
 }
 
 /* CSS grid generated with https://cssgrid-generator.netlify.app */
@@ -45,25 +89,22 @@ button:focus {
   height: 40px;
   margin: 10px;
   text-align: center;
-  color: darkblue;
 }
 
-.question {
-  height: 60px;
-  border: 1px solid #efefef;
+.question,
+.answer {
+  height: 50px;
   margin: 10px;
-  padding: 40px 0px;
+  padding: 10px;
   text-align: center;
-  font-size: 30px;
+  font-size: 26px;
 }
 
 .answer {
-  height: 60px;
-  border: 1px solid #efefef;
-  margin: 10px;
-  padding: 40px 0px;
-  text-align: center;
-  font-size: 30px;
+  border: 1px solid #9ad1d4ff;
+  margin: auto;
+  padding-bottom: 30px;
+  width: 150px;
 }
 
 .number-button {
@@ -78,13 +119,22 @@ button:focus {
   margin: 10px;
 }
 
-.correct-incorrect {
+.correct,
+.incorrect {
   text-align: center;
-  font-size: 100px;
+  font-size: 30px;
+  margin: 30px;
+}
+
+.correct {
+  color: #62c370ff;
+}
+
+.incorrect {
+  color: #cc3363ff;
 }
 
 .answer-input {
-  border: 1px solid #efefef;
   margin: 10px;
   text-align: center;
 }
@@ -92,16 +142,6 @@ button:focus {
 .exercise-footer {
   text-align: center;
   margin: 30px;
-}
-
-.exercise-footer-button {
-  background: none !important;
-  border: none;
-  padding: 0 !important;
-  color: #069;
-  text-decoration: underline;
-  cursor: pointer;
-  margin-right: 15px;
 }
 
 .results {
@@ -119,12 +159,12 @@ button:focus {
   left: 0;
   width: 100%;
   height: 100%;
-  /*background: rgba(0, 0, 0, 0.6);*/
+  background: rgba(0, 0, 0, 0.6);
 }
 
 .modal-main {
   position: fixed;
-  background: transparent;
+  background: white;
   width: 300px;
   height: auto;
   top: 15%;

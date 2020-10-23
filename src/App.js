@@ -17,7 +17,12 @@ function App() {
 
   return (
     <div className="container">
-      <header className="header">Sommetjes</header>
+      <header className="header">
+        <div className="logo">Sommetjes</div>
+        <div className="nav">
+          <button className="button-as-link">inloggen</button>
+        </div>
+      </header>
 
       {selectedExerciseName ? (
         <Exercise

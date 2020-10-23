@@ -25,7 +25,7 @@ export default function Question({ question, answerGiven }) {
   return (
     <>
       <div className="question">
-        <h1>{question.question}</h1>
+        <h1>{question.question} =</h1>
       </div>
 
       <div className="answer">
