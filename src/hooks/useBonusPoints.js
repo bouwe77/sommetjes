@@ -9,7 +9,6 @@ export default function useBonusPoints(points, timeLimitInSeconds) {
     if (bonusPoints === 0) return;
     if (counter > 0) {
       const updatedCounter = counter - 1;
-      console.log(updatedCounter);
       setCounter(updatedCounter);
     } else {
       setBonusPoints(0);

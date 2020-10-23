@@ -31,7 +31,6 @@ export default function Exercise({ name, questions, quit }) {
   }, [setCurrentQuestionIndex, name]);
 
   useEffect(() => {
-    console.log("reset, want volgende vraag");
     resetSuperBonus();
     resetExtraBonus();
   }, [currentQuestionIndex, resetSuperBonus, resetExtraBonus]);
@@ -54,7 +53,7 @@ export default function Exercise({ name, questions, quit }) {
       updatedResults.bonus2 = results.bonus2 + extraBonusPoints;
       updatedResults.correct = results.correct + 1;
     } else updatedResults.incorrect = results.incorrect + 1;
-    console.log(updatedResults);
+
     setResults(updatedResults);
 
     setAnswerResultTimeout(500);
