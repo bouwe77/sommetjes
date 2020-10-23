@@ -24,13 +24,9 @@ export default function Question({ question, answerGiven }) {
 
   return (
     <>
-      <div className="question">
-        <h1>{question.question} =</h1>
-      </div>
+      <div className="question">{question.question} =</div>
 
-      <div className="answer">
-        <h1>{answer}</h1>
-      </div>
+      <div className="answer">{answer}</div>
 
       {answered && <CorrectOrIncorrect isCorrect={isCorrect} />}
 

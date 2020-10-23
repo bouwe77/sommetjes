@@ -23,7 +23,7 @@ export default function NumberPad({ setNumber, clear }) {
       ))}
       <Button style={{ visibility: "hidden" }}>0</Button>
       <Button onClick={() => setNumber("0")}>0</Button>
-      <Button onClick={clear}>WIS</Button>
+      <Button onClick={clear}>wis</Button>
     </>
   );
 }
