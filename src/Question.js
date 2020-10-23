@@ -34,10 +34,14 @@ export default function Question({ question, answerResult }) {
 
       {answered && <CorrectOrIncorrect isCorrect={isCorrect} />}
 
-      <NumberPad setNumber={concatenateNumber} clear={clearNumber} />
+      <div className="answer-input">
+        <NumberPad setNumber={concatenateNumber} clear={clearNumber} />
 
-      <div>
-        <button onClick={submitAnswer}>OK</button>
+        <div>
+          <button className="ok-button" onClick={submitAnswer}>
+            OK
+          </button>
+        </div>
       </div>
     </>
   );

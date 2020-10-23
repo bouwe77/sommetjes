@@ -2,7 +2,7 @@ import React, { useCallback, useState } from "react";
 
 export default function NumberPad({ setNumber, clear }) {
   return (
-    <div className="numberpad-container">
+    <>
       {["1", "2", "3", "4", "5", "6", "7", "8", "9"].map((number, index) => (
         <span key={number}>
           <Button onClick={() => setNumber(number)}>{number}</Button>
@@ -12,7 +12,7 @@ export default function NumberPad({ setNumber, clear }) {
       <Button style={{ visibility: "hidden" }}>0</Button>
       <Button onClick={() => setNumber("0")}>0</Button>
       <Button onClick={clear}>WIS</Button>
-    </div>
+    </>
   );
 }
 

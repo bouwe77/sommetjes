@@ -47,8 +47,14 @@ export default function Exercise({ name, questions, quit }) {
       {finished ? (
         <div>
           <div>OK, klaar...</div>
-          <button onClick={tryAgain}>Deze oefening opnieuw</button>
-          <button onClick={quit}>Andere oefening kiezen</button>
+          <div style={{ display: "flex" }}>
+            <button className="exercise-footer-button" onClick={tryAgain}>
+              Deze oefening opnieuw
+            </button>
+            <button className="exercise-footer-button" onClick={quit}>
+              Andere oefening kiezen
+            </button>
+          </div>
         </div>
       ) : (
         <div>
@@ -56,7 +62,11 @@ export default function Exercise({ name, questions, quit }) {
             question={questions[currentQuestionIndex]}
             answerResult={answerResult}
           />
-          <button onClick={quit}>Andere oefening kiezen</button>
+          <div className="exercise-footer">
+            <button className="exercise-footer-button" onClick={quit}>
+              Andere oefening kiezen
+            </button>
+          </div>
         </div>
       )}
     </div>
