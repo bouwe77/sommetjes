@@ -17,6 +17,8 @@ function App() {
 
   return (
     <div className="container">
+      <header className="header">Sommetjes</header>
+
       {selectedExerciseName ? (
         <Exercise
           name={selectedExerciseName}

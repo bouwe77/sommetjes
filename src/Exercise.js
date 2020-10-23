@@ -50,9 +50,11 @@ export default function Exercise({ name, questions, quit }) {
 
   return (
     <div>
+      {/*
       <div className="exercise-title">
         <h1>{name}</h1>
       </div>
+    */}
 
       {finished ? (
         <div>

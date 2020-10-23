@@ -1,9 +1,12 @@
 body {
+  margin: 0;
+  padding: 0;
 }
 
 .container {
   margin: auto;
-  width: 400px;
+  width: 100%;
+  max-width: 420px;
 }
 
 h1 {
@@ -12,6 +15,15 @@ h1 {
 
 button:focus {
   outline: 0;
+}
+
+.header {
+  background-color: #98d2eb;
+  width: 100%;
+  text-align: center;
+  font-size: 30px;
+  padding: 20px 0px;
+  margin-bottom: 20px;
 }
 
 /* CSS grid generated with https://cssgrid-generator.netlify.app */
@@ -37,18 +49,21 @@ button:focus {
 }
 
 .question {
-  height: 40px;
+  height: 60px;
   border: 1px solid #efefef;
   margin: 10px;
+  padding: 40px 0px;
   text-align: center;
+  font-size: 30px;
 }
 
 .answer {
-  height: 40px;
+  height: 60px;
   border: 1px solid #efefef;
   margin: 10px;
-  padding: 20px 0px;
+  padding: 40px 0px;
   text-align: center;
+  font-size: 30px;
 }
 
 .number-button {
@@ -75,8 +90,8 @@ button:focus {
 }
 
 .exercise-footer {
-  display: flex;
-  margin: 10px;
+  text-align: center;
+  margin: 30px;
 }
 
 .exercise-footer-button {
@@ -104,12 +119,12 @@ button:focus {
   left: 0;
   width: 100%;
   height: 100%;
-  background: rgba(0, 0, 0, 0.6);
+  /*background: rgba(0, 0, 0, 0.6);*/
 }
 
 .modal-main {
   position: fixed;
-  background: white;
+  background: transparent;
   width: 300px;
   height: auto;
   top: 15%;
