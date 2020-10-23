@@ -13,7 +13,12 @@ function getMultiplicationTable(number, until) {
       number1 = number;
       number2 = index;
     }
-    table.push(`${number1} x ${number2}`);
+
+    const question = {
+      question: `${number1} x ${number2}`,
+      answer: String(number1 * number2),
+    };
+    table.push(question);
   }
 
   shuffleArray(table);
@@ -24,14 +29,14 @@ function getMultiplicationTable(number, until) {
 /**
  * Generates addition sums.
  * Example: 8 sums with numbers between 1 and 10, where at least one of the numbers in the sum must be 5:
- *   getAdditionSum(1, 10, 8, 5)
+ *   getAdditionSums(1, 10, 8, 5)
  * @param {number} from The smallest allowed value.
  * @param {number} until The largest value allowed value.
  * @param {number} howMany How many sums.
  * @param {number} requiredMin (optional) At least one of the two numbers in the sum must be larger than this number.
  * @returns A string array of sums.
  */
-function getAdditionSum(from, until, howMany, requiredMin) {
+function getAdditionSums(from, until, howMany, requiredMin) {
   if (!requiredMin) requiredMin = from;
   const sums = [];
 
@@ -42,8 +47,13 @@ function getAdditionSum(from, until, howMany, requiredMin) {
     if (
       random1 + random2 <= until &&
       (random1 >= requiredMin || random2 >= requiredMin)
-    )
-      sums.push(`${random1} + ${random2}`);
+    ) {
+      const question = {
+        question: `${random1} + ${random2}`,
+        answer: String(random1 + random2),
+      };
+      sums.push(question);
+    }
   }
 
   return sums;
@@ -52,14 +62,14 @@ function getAdditionSum(from, until, howMany, requiredMin) {
 /**
  * Generates subtraction sums.
  * Example: 8 sums with numbers between 1 and 10, where at least one of the numbers in the sum must be 5:
- *   getSubtractionSum(1, 10, 8, 5)
+ *   getSubtractionSums(1, 10, 8, 5)
  * @param {number} from The smallest allowed value.
  * @param {number} until The largest value allowed value.
  * @param {number} howMany How many sums.
  * @param {number} requiredMin (optional) At least one of the two numbers in the sum must be larger than this number.
  * @returns A string array of sums.
  */
-function getSubtractionSum(from, until, howMany, requiredMin) {
+function getSubtractionSums(from, until, howMany, requiredMin) {
   if (!requiredMin) requiredMin = from;
   const sums = [];
 
@@ -72,8 +82,13 @@ function getSubtractionSum(from, until, howMany, requiredMin) {
       result >= 0 &&
       result <= until &&
       (random1 >= requiredMin || random2 >= requiredMin)
-    )
-      sums.push(`${random1} - ${random2}`);
+    ) {
+      const question = {
+        question: `${random1} - ${random2}`,
+        answer: String(random1 - random2),
+      };
+      sums.push(question);
+    }
   }
 
   return sums;
@@ -102,4 +117,8 @@ function shuffleArray(array) {
   }
 }
 
-module.exports = { getMultiplicationTable, getAdditionSum, getSubtractionSum };
+module.exports = {
+  getMultiplicationTable,
+  getAdditionSums,
+  getSubtractionSums,
+};

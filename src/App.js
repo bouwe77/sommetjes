@@ -6,6 +6,13 @@ import exercises from "./data";
 
 function App() {
   const [selectedExerciseName, setSelectedExerciseName] = useState(null);
+  const [questions, setQuestions] = useState([]);
+
+  useEffect(() => {
+    if (!selectedExerciseName) return;
+    const questions = exercises[selectedExerciseName].getQuestions();
+    setQuestions(questions);
+  }, [selectedExerciseName]);
 
   function selectExercise(name) {
     setSelectedExerciseName(name);
@@ -20,14 +27,16 @@ function App() {
       <header className="header">
         <div className="logo">Sommetjes</div>
         <div className="nav">
+          {/*
           <button className="button-as-link">inloggen</button>
+        */}
         </div>
       </header>
 
-      {selectedExerciseName ? (
+      {selectedExerciseName && questions.length > 0 ? (
         <Exercise
           name={selectedExerciseName}
-          questions={exercises[selectedExerciseName]}
+          questions={questions}
           quit={deselectExercise}
         />
       ) : (

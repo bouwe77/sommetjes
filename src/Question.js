@@ -22,6 +22,8 @@ export default function Question({ question, answerGiven }) {
     answerGiven(isCorrect);
   }
 
+  if (!question) return null;
+
   return (
     <>
       <div className="question">{question.question} =</div>
