@@ -36,7 +36,12 @@ function App() {
 
       <footer>
         <hr />
-        <span className="footer-text">gemaakt door Bouwe ❤️</span>
+        <span className="footer-text">
+          gemaakt door Bouwe{" "}
+          <span role="img" aria-label="love">
+            ❤️
+          </span>
+        </span>
       </footer>
     </div>
   );
