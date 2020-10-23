@@ -17,8 +17,35 @@ export default {
   "Aftrekken onder de 20": {
     getQuestions: () => getSubtractionSums(5, 20, 10, 10),
   },
+  "Tafel van 10": {
+    getQuestions: () => getMultiplicationTable(10, 10),
+  },
+  "Tafel van 9": {
+    getQuestions: () => getMultiplicationTable(9, 10),
+  },
+  "Tafel van 8": {
+    getQuestions: () => getMultiplicationTable(8, 10),
+  },
+  "Tafel van 7": {
+    getQuestions: () => getMultiplicationTable(7, 10),
+  },
+  "Tafel van 6": {
+    getQuestions: () => getMultiplicationTable(6, 10),
+  },
+  "Tafel van 5": {
+    getQuestions: () => getMultiplicationTable(5, 10),
+  },
+  "Tafel van 4": {
+    getQuestions: () => getMultiplicationTable(4, 10),
+  },
   "Tafel van 3": {
     getQuestions: () => getMultiplicationTable(3, 10),
+  },
+  "Tafel van 2": {
+    getQuestions: () => getMultiplicationTable(2, 10),
+  },
+  "Tafel van 1": {
+    getQuestions: () => getMultiplicationTable(1, 10),
   },
 };
 
