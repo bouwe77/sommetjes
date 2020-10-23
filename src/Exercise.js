@@ -3,19 +3,24 @@ import useInterval from "./hooks/useInterval";
 import useLocalStorage from "./hooks/useLocalStorage";
 import Question from "./Question";
 import ExerciseFinished from "./ExerciseFinished";
+import useBonusPoints from "./hooks/useBonusPoints";
 
 export default function Exercise({ name, questions, quit }) {
   const [currentQuestionIndex, setCurrentQuestionIndex] = useLocalStorage(
     "currentExerciseIndex",
     0
   );
-  const [timeout, setTimeout] = useState(null);
+  const [answerResultTimeout, setAnswerResultTimeout] = useState(null);
   const [finished, setFinished] = useState(false);
   const [results, setResults] = useState({
     correct: 0,
     incorrect: 0,
+    bonus1: 0,
+    bonus2: 0,
     total: questions.length,
   });
+  const [superBonusPoints, resetSuperBonus] = useBonusPoints(1, 5);
+  const [extraBonusPoints, resetExtraBonus] = useBonusPoints(1, 10);
 
   const indexNr = Number(currentQuestionIndex);
   const canGoNext = indexNr < questions.length - 1;
@@ -25,6 +30,12 @@ export default function Exercise({ name, questions, quit }) {
     setCurrentQuestionIndex(0);
   }, [setCurrentQuestionIndex, name]);
 
+  useEffect(() => {
+    console.log("reset, want volgende vraag");
+    resetSuperBonus();
+    resetExtraBonus();
+  }, [currentQuestionIndex, resetSuperBonus, resetExtraBonus]);
+
   useInterval(() => {
     if (canGoNext) {
       goToNext();
@@ -32,20 +43,33 @@ export default function Exercise({ name, questions, quit }) {
       setFinished(true);
     }
 
-    setTimeout(null);
-  }, timeout);
+    setAnswerResultTimeout(null);
+  }, answerResultTimeout);
 
   function answerGiven(isCorrect) {
-    const updatedResults = isCorrect
-      ? { ...results, correct: results.correct + 1 }
-      : { ...results, incorrect: results.incorrect + 1 };
+    const updatedResults = { ...results };
+
+    if (isCorrect) {
+      updatedResults.bonus1 = results.bonus1 + superBonusPoints;
+      updatedResults.bonus2 = results.bonus2 + extraBonusPoints;
+      updatedResults.correct = results.correct + 1;
+    } else updatedResults.incorrect = results.incorrect + 1;
+    console.log(updatedResults);
     setResults(updatedResults);
-    setTimeout(1000);
+
+    setAnswerResultTimeout(500);
   }
 
   function tryAgain() {
     setFinished(false);
     setCurrentQuestionIndex(0);
+    setResults({
+      correct: 0,
+      incorrect: 0,
+      bonus1: 0,
+      bonus2: 0,
+      total: questions.length,
+    });
   }
 
   return (
