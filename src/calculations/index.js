@@ -1,27 +1,29 @@
 /**
  * Generates a multiplication table for the given number.
  * @param {number} number Which multiplication table.
- * @param {number} until the max number the multiply the number with and also how many sums.
+ * @param {number} until the max number the multiply the number with.
+ * @param {number} howMany How many sums.
  * @returns A string array of sums.
  */
-function getMultiplicationTable(number, until) {
+function getMultiplicationTable(number, until, howMany = 10) {
   const table = [];
-  for (let index = 1; index <= until; index++) {
-    let number1 = index;
+  while (table.length !== howMany) {
+    let number1 = getRandomNumber(1, until);
     let number2 = number;
     if (Math.random() >= 0.5) {
-      number1 = number;
-      number2 = index;
+      let temp = number1;
+      number1 = number2;
+      number2 = temp;
     }
 
     const question = {
       question: `${number1} x ${number2}`,
       answer: String(number1 * number2),
     };
-    table.push(question);
-  }
 
-  shuffleArray(table);
+    const found = table.some((q) => q.question === question.question);
+    if (!found) table.push(question);
+  }
 
   return table;
 }
@@ -110,12 +112,12 @@ function getRandomNumber(min, max) {
  * Shuffle the array by modifying it in place.
  * @param {array} array The array to shuffle.
  */
-function shuffleArray(array) {
-  for (let i = array.length - 1; i > 0; i--) {
-    const j = Math.floor(Math.random() * (i + 1));
-    [array[i], array[j]] = [array[j], array[i]];
-  }
-}
+// function shuffleArray(array) {
+//   for (let i = array.length - 1; i > 0; i--) {
+//     const j = Math.floor(Math.random() * (i + 1));
+//     [array[i], array[j]] = [array[j], array[i]];
+//   }
+// }
 
 module.exports = {
   getMultiplicationTable,

@@ -26,6 +26,8 @@ export default function Exercise({ name, questions, quit }) {
   const canGoNext = indexNr < questions.length - 1;
   const goToNext = () => setCurrentQuestionIndex(indexNr + 1);
 
+  //TODO Heb ik niet teveel useEffects?
+
   useEffect(() => {
     setCurrentQuestionIndex(0);
   }, [setCurrentQuestionIndex, name]);
