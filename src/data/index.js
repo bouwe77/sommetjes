@@ -6,126 +6,127 @@ import {
 
 //TODO Optellen met 2 getallen onder de 10 waarbij het totaal boven die 10 is...`
 
-export default {
-  "Optellen onder de 10": {
-    type: "additions",
-    getQuestions: () => getAdditionSums(1, 10, 10),
+export const exerciseTypes = ["Optellen", "Aftrekken", "Tafels"];
+
+export const exercises = [
+  {
+    name: "t/m 10",
+    type: "Optellen",
+    getQuestions: () => getAdditionSums(1, 10, 20),
   },
-  "Optellen onder de 20": {
-    type: "additions",
-    getQuestions: () => getAdditionSums(5, 20, 10, 10),
+  {
+    name: "t/m 20",
+    type: "Optellen",
+    getQuestions: () => getAdditionSums(5, 20, 10, 20),
   },
-  "Aftrekken onder de 10": {
-    type: "subtractions",
-    getQuestions: () => getSubtractionSums(1, 10, 10),
+  {
+    name: "t/m 10",
+    type: "Aftrekken",
+    getQuestions: () => getSubtractionSums(1, 10, 20),
   },
-  "Aftrekken onder de 20": {
-    type: "subtractions",
-    getQuestions: () => getSubtractionSums(5, 20, 10, 10),
+  {
+    name: "t/m 20",
+    type: "Aftrekken",
+    getQuestions: () => getSubtractionSums(5, 20, 10, 20),
   },
-  "Tafel van 1": {
-    type: "multiplications",
+  {
+    name: "1",
+    type: "Tafels",
     getQuestions: () => getMultiplicationTable(1, 12, 20),
   },
-  "Tafel van 2": {
-    type: "multiplications",
+  {
+    name: "2",
+    type: "Tafels",
     getQuestions: () => getMultiplicationTable(2, 12, 20),
   },
-  "Tafel van 3": {
-    type: "multiplications",
+  {
+    name: "3",
+    type: "Tafels",
     getQuestions: () => getMultiplicationTable(3, 12, 20),
   },
-  "Tafel van 4": {
-    type: "multiplications",
+  {
+    name: "4",
+    type: "Tafels",
     getQuestions: () => getMultiplicationTable(4, 12, 20),
   },
-  "Tafel van 5": {
-    type: "multiplications",
+  {
+    name: "5",
+    type: "Tafels",
     getQuestions: () => getMultiplicationTable(5, 12, 20),
   },
-  "Tafel van 6": {
-    type: "multiplications",
+  {
+    name: "6",
+    type: "Tafels",
     getQuestions: () => getMultiplicationTable(6, 12, 20),
   },
-  "Tafel van 7": {
-    type: "multiplications",
+  {
+    name: "7",
+    type: "Tafels",
     getQuestions: () => getMultiplicationTable(7, 12, 20),
   },
-  "Tafel van 8": {
-    type: "multiplications",
+  {
+    name: "8",
+    type: "Tafels",
     getQuestions: () => getMultiplicationTable(8, 12, 20),
   },
-  "Tafel van 9": {
-    type: "multiplications",
+  {
+    name: "9",
+    type: "Tafels",
     getQuestions: () => getMultiplicationTable(9, 12, 20),
   },
-  "Tafel van 10": {
-    type: "multiplications",
+  {
+    name: "10",
+    type: "Tafels",
     getQuestions: () => getMultiplicationTable(10, 12, 20),
   },
-  "Tafel van 11": {
-    type: "multiplications",
+  {
+    name: "11",
+    type: "Tafels",
     getQuestions: () => getMultiplicationTable(11, 12, 20),
   },
-  "Tafel van 12": {
-    type: "multiplications",
+  {
+    name: "12",
+    type: "Tafels",
     getQuestions: () => getMultiplicationTable(12, 12, 20),
   },
-  "Tafel van 13": {
-    type: "multiplications",
+  {
+    name: "13",
+    type: "Tafels",
     getQuestions: () => getMultiplicationTable(13, 12, 20),
   },
-  "Tafel van 14": {
-    type: "multiplications",
+  {
+    name: "14",
+    type: "Tafels",
     getQuestions: () => getMultiplicationTable(14, 12, 20),
   },
-  "Tafel van 15": {
-    type: "multiplications",
+  {
+    name: "15",
+    type: "Tafels",
     getQuestions: () => getMultiplicationTable(15, 12, 20),
   },
-  "Tafel van 16": {
-    type: "multiplications",
+  {
+    name: "16",
+    type: "Tafels",
     getQuestions: () => getMultiplicationTable(16, 12, 20),
   },
-  "Tafel van 17": {
-    type: "multiplications",
+  {
+    name: "17",
+    type: "Tafels",
     getQuestions: () => getMultiplicationTable(17, 12, 20),
   },
-  "Tafel van 18": {
-    type: "multiplications",
+  {
+    name: "18",
+    type: "Tafels",
     getQuestions: () => getMultiplicationTable(18, 12, 20),
   },
-  "Tafel van 19": {
-    type: "multiplications",
+  {
+    name: "19",
+    type: "Tafels",
     getQuestions: () => getMultiplicationTable(19, 12, 20),
   },
-  "Tafel van 20": {
-    type: "multiplications",
+  {
+    name: "20",
+    type: "Tafels",
     getQuestions: () => getMultiplicationTable(20, 12, 20),
   },
-};
-
-/*
-export default {	
-    "Optellen onder de 10": [	
-      { question: "1 + 1", answer: "2" },	
-      { question: "1 + 2", answer: "3" },	
-      { question: "3 + 2", answer: "5" },	
-    ],	
-    "Optellen onder de 20": [	
-      { question: "7 + 9", answer: "16" },	
-      { question: "18 + 1", answer: "19" },	
-      { question: "13 + 2", answer: "15" },	
-    ],	
-    "Aftrekken onder de 10": [	
-      { question: "2 - 1", answer: "1" },	
-      { question: "9 - 6", answer: "3" },	
-      { question: "8 - 3", answer: "5" },	
-    ],	
-    "Aftrekken onder de 20": [	
-      { question: "20 - 1", answer: "19" },	
-      { question: "19 - 16", answer: "3" },	
-      { question: "18 - 3", answer: "15" },	
-    ],	
-  };
-*/
+];

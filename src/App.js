@@ -2,7 +2,7 @@ import React, { useEffect, useState } from "react";
 import Exercise from "./Exercise";
 import Exercises from "./Exercises";
 
-import exercises from "./data";
+import { exercises } from "./data";
 
 function App() {
   const [selectedExerciseName, setSelectedExerciseName] = useState(null);
@@ -10,7 +10,9 @@ function App() {
 
   useEffect(() => {
     if (!selectedExerciseName) return;
-    const questions = exercises[selectedExerciseName].getQuestions();
+    const questions = exercises
+      .find((x) => x.name === selectedExerciseName)
+      .getQuestions();
     setQuestions(questions);
   }, [selectedExerciseName]);
 
