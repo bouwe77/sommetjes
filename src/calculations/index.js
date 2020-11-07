@@ -101,7 +101,7 @@ function getAdditionAndSubtractionSums(from, until, howMany, requiredMin) {
   const howManySubtractions = howMany - howManyAdditions;
 
   const additions = getAdditionSums(from, until, howManyAdditions, requiredMin);
-  const subtractions = getAdditionSums(
+  const subtractions = getSubtractionSums(
     from,
     until,
     howManySubtractions,
@@ -126,14 +126,18 @@ function getRandomNumber(min, max) {
 }
 
 /**
- * Shuffle the array by modifying it in place.
+ * Shuffles the array and returns a new one.
  * @param {array} array The array to shuffle.
+ * @returns A shuffled array.
  */
 function shuffleArray(array) {
-  for (let i = array.length - 1; i > 0; i--) {
+  const shuffled = [...array];
+  for (let i = shuffled.length - 1; i > 0; i--) {
     const j = Math.floor(Math.random() * (i + 1));
-    [array[i], array[j]] = [array[j], array[i]];
+    [shuffled[i], shuffled[j]] = [shuffled[j], shuffled[i]];
   }
+
+  return shuffled;
 }
 
 module.exports = {
