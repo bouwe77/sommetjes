@@ -96,6 +96,23 @@ function getSubtractionSums(from, until, howMany, requiredMin) {
   return sums;
 }
 
+function getAdditionAndSubtractionSums(from, until, howMany, requiredMin) {
+  const howManyAdditions = Math.ceil(howMany / 2);
+  const howManySubtractions = howMany - howManyAdditions;
+
+  const additions = getAdditionSums(from, until, howManyAdditions, requiredMin);
+  const subtractions = getAdditionSums(
+    from,
+    until,
+    howManySubtractions,
+    requiredMin
+  );
+
+  const additionsAndSubtractions = [...additions, ...subtractions];
+
+  return shuffleArray(additionsAndSubtractions);
+}
+
 /**
  * Generates a random number between the given min and max.
  * In contrast to Math.random this function does an inclusive min and max.
@@ -112,15 +129,16 @@ function getRandomNumber(min, max) {
  * Shuffle the array by modifying it in place.
  * @param {array} array The array to shuffle.
  */
-// function shuffleArray(array) {
-//   for (let i = array.length - 1; i > 0; i--) {
-//     const j = Math.floor(Math.random() * (i + 1));
-//     [array[i], array[j]] = [array[j], array[i]];
-//   }
-// }
+function shuffleArray(array) {
+  for (let i = array.length - 1; i > 0; i--) {
+    const j = Math.floor(Math.random() * (i + 1));
+    [array[i], array[j]] = [array[j], array[i]];
+  }
+}
 
 module.exports = {
   getMultiplicationTable,
   getAdditionSums,
   getSubtractionSums,
+  getAdditionAndSubtractionSums,
 };

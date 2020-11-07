@@ -5,23 +5,23 @@ import Exercises from "./Exercises";
 import { exercises } from "./data";
 
 function App() {
-  const [selectedExerciseName, setSelectedExerciseName] = useState(null);
+  const [selectedExerciseId, setSelectedExerciseId] = useState(null);
   const [questions, setQuestions] = useState([]);
 
   useEffect(() => {
-    if (!selectedExerciseName) return;
+    if (!selectedExerciseId) return;
     const questions = exercises
-      .find((x) => x.name === selectedExerciseName)
+      .find((x) => x.id === selectedExerciseId)
       .getQuestions();
     setQuestions(questions);
-  }, [selectedExerciseName]);
+  }, [selectedExerciseId]);
 
-  function selectExercise(name) {
-    setSelectedExerciseName(name);
+  function selectExercise(id) {
+    setSelectedExerciseId(id);
   }
 
   function deselectExercise() {
-    setSelectedExerciseName(null);
+    setSelectedExerciseId(null);
   }
 
   return (
@@ -35,9 +35,9 @@ function App() {
         </div>
       </header>
 
-      {selectedExerciseName && questions.length > 0 ? (
+      {selectedExerciseId && questions.length > 0 ? (
         <Exercise
-          name={selectedExerciseName}
+          name={selectedExerciseId}
           questions={questions}
           quit={deselectExercise}
         />
