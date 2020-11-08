@@ -5,7 +5,7 @@
  * @param {number} howMany How many sums.
  * @returns A string array of sums.
  */
-function getMultiplicationTable(number, until, howMany = 10) {
+export function getMultiplicationTable(number, until, howMany = 10) {
   const table = [];
   while (table.length !== howMany) {
     let number1 = getRandomNumber(1, until);
@@ -38,7 +38,7 @@ function getMultiplicationTable(number, until, howMany = 10) {
  * @param {number} requiredMin (optional) At least one of the two numbers in the sum must be larger than this number.
  * @returns A string array of sums.
  */
-function getAdditionSums(from, until, howMany, requiredMin) {
+export function getAdditionSums(from, until, howMany, requiredMin) {
   if (!requiredMin) requiredMin = from;
   const sums = [];
 
@@ -71,7 +71,7 @@ function getAdditionSums(from, until, howMany, requiredMin) {
  * @param {number} requiredMin (optional) At least one of the two numbers in the sum must be larger than this number.
  * @returns A string array of sums.
  */
-function getSubtractionSums(from, until, howMany, requiredMin) {
+export function getSubtractionSums(from, until, howMany, requiredMin) {
   if (!requiredMin) requiredMin = from;
   const sums = [];
 
@@ -96,7 +96,12 @@ function getSubtractionSums(from, until, howMany, requiredMin) {
   return sums;
 }
 
-function getAdditionAndSubtractionSums(from, until, howMany, requiredMin) {
+export function getAdditionAndSubtractionSums(
+  from,
+  until,
+  howMany,
+  requiredMin
+) {
   const howManyAdditions = Math.ceil(howMany / 2);
   const howManySubtractions = howMany - howManyAdditions;
 
@@ -140,9 +145,9 @@ function shuffleArray(array) {
   return shuffled;
 }
 
-module.exports = {
-  getMultiplicationTable,
-  getAdditionSums,
-  getSubtractionSums,
-  getAdditionAndSubtractionSums,
-};
+// module.exports = {
+//   getMultiplicationTable,
+//   getAdditionSums,
+//   getSubtractionSums,
+//   getAdditionAndSubtractionSums,
+// };
