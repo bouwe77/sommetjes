@@ -51,24 +51,25 @@ export const exercises = [
   //   type: "Optellen en aftrekken",
   //   getQuestions: () => getAdditionSums(5, 20, 10, 20),
   // },
-  {
-    id: "5",
-    name: "1",
-    type: "Tafels",
-    getQuestions: () => getMultiplicationTable(1, 12, 20),
-  },
-  {
-    id: "6",
-    name: "2",
-    type: "Tafels",
-    getQuestions: () => getMultiplicationTable(2, 12, 20),
-  },
-  {
-    id: "7",
-    name: "3",
-    type: "Tafels",
-    getQuestions: () => getMultiplicationTable(3, 12, 20),
-  },
+  // {
+  //   id: "5",
+  //   name: "1",
+  //   type: "Tafels",
+  //   getQuestions: () => getMultiplicationTable(1, 12, 20),
+  // },
+  // {
+  //   id: "6",
+  //   name: "2",
+  //   type: "Tafels",
+  //   getQuestions: () => getMultiplicationTable(2, 12, 20),
+  // },
+  // {
+  //   id: "7",
+  //   name: "3",
+  //   type: "Tafels",
+  //   getQuestions: () => getMultiplicationTable(3, 12, 20),
+  // },
+  /*
   {
     id: "8",
     name: "4",
@@ -171,4 +172,5 @@ export const exercises = [
     type: "Tafels",
     getQuestions: () => getMultiplicationTable(20, 12, 20),
   },
+*/
 ];

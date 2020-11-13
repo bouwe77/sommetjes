@@ -12,7 +12,7 @@ export default function Exercises({ exercises, selectExercise }) {
               {exercises
                 //   .filter((x) => x.type === exerciseType)
                 .map((exercise, index) => (
-                  <span key={exercise.id}>
+                  <span key={exerciseType + exercise.id}>
                     <button
                       onClick={() => selectExercise(exercise.id)}
                       className={`exercise-button variant-${(index % 5) + 1}`}
