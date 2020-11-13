@@ -11,7 +11,7 @@ import {
 export const exerciseTypes = [
   "Optellen",
   "Aftrekken",
-  "Optellen en aftrekken",
+  //  "Optellen en aftrekken",
   "Tafels",
 ];
 
