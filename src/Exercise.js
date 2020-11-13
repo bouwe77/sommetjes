@@ -35,7 +35,7 @@ export default function Exercise({ name, questions, quit }) {
   useEffect(() => {
     resetBonus5Seconds();
     resetBonus10Seconds();
-  }, [currentQuestionIndex, resetBonus5Seconds, resetBonus10Seconds]);
+  }, [resetBonus5Seconds, resetBonus10Seconds]);
 
   useInterval(() => {
     if (canGoNext) {

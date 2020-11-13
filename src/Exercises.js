@@ -1,14 +1,13 @@
 import React from "react";
-//import { exerciseTypes } from "./data";
+import { exerciseTypes } from "./data";
 
 export default function Exercises({ exercises, selectExercise }) {
-  /*
   return (
     <div>
       {exerciseTypes.map((exerciseType) => (
         <div key={exerciseType}>
           <h3>{exerciseType}</h3>
-          <div className="exercises">
+          {/*          <div className="exercises">
             {exercises
               .filter((x) => x.type === exerciseType)
               .map((exercise, index) => (
@@ -22,27 +21,34 @@ export default function Exercises({ exercises, selectExercise }) {
                 </span>
               ))}
           </div>
+              */}
+
+          <button
+            onClick={() => selectExercise("1")}
+            className={`exercise-button variant-1}`}
+          >
+            Onder 10
+          </button>
         </div>
       ))}
     </div>
   );
-              */
 
-  return (
-    <div>
-      <div key="1">
-        <h3>Optellen</h3>
-        <div className="exercises">
-          <span key="2">
-            <button
-              onClick={() => selectExercise("1")}
-              className={`exercise-button variant-1}`}
-            >
-              Onder 10
-            </button>
-          </span>
-        </div>
-      </div>
-    </div>
-  );
+  // return (
+  //   <div>
+  //     <div key="1">
+  //       <h3>Optellen</h3>
+  //       <div className="exercises">
+  //         <span key="2">
+  //           <button
+  //             onClick={() => selectExercise("1")}
+  //             className={`exercise-button variant-1}`}
+  //           >
+  //             Onder 10
+  //           </button>
+  //         </span>
+  //       </div>
+  //     </div>
+  //   </div>
+  // );
 }
