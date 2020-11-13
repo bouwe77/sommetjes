@@ -10,7 +10,7 @@ export default function Exercises({ exercises, selectExercise }) {
           {
             <div className="exercises">
               {exercises
-                //   .filter((x) => x.type === exerciseType)
+                .filter((x) => x.type === exerciseType)
                 .map((exercise, index) => (
                   <span key={exerciseType + exercise.id}>
                     <button

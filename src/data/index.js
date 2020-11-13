@@ -1,5 +1,5 @@
 import {
-  //getMultiplicationTable,
+  getMultiplicationTable,
   getAdditionSums,
   getSubtractionSums,
   //  getAdditionAndSubtractionSums,
@@ -51,13 +51,13 @@ export const exercises = [
   //   type: "Optellen en aftrekken",
   //   getQuestions: () => getAdditionSums(5, 20, 10, 20),
   // },
-  // {
-  //   id: "5",
-  //   name: "1",
-  //   type: "Tafels",
-  //   getQuestions: () => getMultiplicationTable(1, 12, 20),
-  // },
-  // {
+  {
+    id: "5",
+    name: "1",
+    type: "Tafels",
+    getQuestions: () => getMultiplicationTable(1, 12, 20),
+  },
+  //{
   //   id: "6",
   //   name: "2",
   //   type: "Tafels",

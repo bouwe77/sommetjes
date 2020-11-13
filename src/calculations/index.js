@@ -7,25 +7,29 @@
  */
 export function getMultiplicationTable(number, until, howMany = 10) {
   const table = [];
-  while (table.length !== howMany) {
-    let number1 = getRandomNumber(1, until);
-    let number2 = number;
-    if (Math.random() >= 0.5) {
-      let temp = number1;
-      number1 = number2;
-      number2 = temp;
-    }
 
-    const question = {
+  if (until < 1 || howMany < 1) return table;
+
+  for (let index = 1; index <= until; index++) {
+    let number1 = index;
+    let number2 = number;
+
+    const question1 = {
       question: `${number1} x ${number2}`,
       answer: String(number1 * number2),
     };
+    table.push(question1);
 
-    const found = table.some((q) => q.question === question.question);
-    if (!found) table.push(question);
+    const question2 = {
+      question: `${number2} x ${number1}`,
+      answer: String(number1 * number2),
+    };
+    table.push(question2);
   }
 
-  return table;
+  const selected = shuffleArray(table).slice(0, howMany);
+
+  return selected;
 }
 
 /**
@@ -40,7 +44,10 @@ export function getMultiplicationTable(number, until, howMany = 10) {
  */
 export function getAdditionSums(from, until, howMany, requiredMin) {
   if (!requiredMin) requiredMin = from;
+
   const sums = [];
+
+  if (from >= until || howMany < 1) return sums;
 
   while (sums.length !== howMany) {
     const random1 = getRandomNumber(from, until);
