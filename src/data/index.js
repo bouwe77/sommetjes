@@ -1,5 +1,5 @@
 import {
-  getMultiplicationTable,
+  //getMultiplicationTable,
   getAdditionSums,
   getSubtractionSums,
   //  getAdditionAndSubtractionSums,
