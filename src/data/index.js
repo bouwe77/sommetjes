@@ -3,7 +3,7 @@ import {
   getMultiplicationTable,
   getAdditionSums,
   getSubtractionSums,
-  getAdditionAndSubtractionSums,
+  //  getAdditionAndSubtractionSums,
 } from "../calculations";
 
 //TODO Optellen met 2 getallen onder de 10 waarbij het totaal boven die 10 is...`
@@ -40,12 +40,12 @@ export const exercises = [
     type: "Aftrekken",
     getQuestions: () => getSubtractionSums(5, 20, 10, 20),
   },
-  {
-    id: uuidv4(),
-    name: "t/m 20",
-    type: "Optellen en aftrekken",
-    getQuestions: () => getAdditionAndSubtractionSums(1, 20, 2, 20),
-  },
+  // {
+  //   id: uuidv4(),
+  //   name: "t/m 20",
+  //   type: "Optellen en aftrekken",
+  //   getQuestions: () => getAdditionAndSubtractionSums(1, 20, 2, 20),
+  // },
   // {
   //   id: uuidv4(),
   //   name: "t/m 20",
