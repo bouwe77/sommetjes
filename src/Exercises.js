@@ -7,28 +7,22 @@ export default function Exercises({ exercises, selectExercise }) {
       {exerciseTypes.map((exerciseType) => (
         <div key={exerciseType}>
           <h3>{exerciseType}</h3>
-          {/*          <div className="exercises">
-            {exercises
-              .filter((x) => x.type === exerciseType)
-              .map((exercise, index) => (
-                <span key={exercise.id}>
-                  <button
-                    onClick={() => selectExercise(exercise.id)}
-                    className={`exercise-button variant-${(index % 5) + 1}`}
-                  >
-                    {exercise.name}
-                  </button>
-                </span>
-              ))}
-          </div>
-              */}
-
-          <button
-            onClick={() => selectExercise("1")}
-            className={`exercise-button variant-1}`}
-          >
-            Onder 10
-          </button>
+          {
+            <div className="exercises">
+              {exercises
+                //   .filter((x) => x.type === exerciseType)
+                .map((exercise, index) => (
+                  <span key={exercise.id}>
+                    <button
+                      onClick={() => selectExercise(exercise.id)}
+                      className={`exercise-button variant-${(index % 5) + 1}`}
+                    >
+                      {exercise.name}
+                    </button>
+                  </span>
+                ))}
+            </div>
+          }
         </div>
       ))}
     </div>
