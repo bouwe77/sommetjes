@@ -17,7 +17,7 @@ export const exerciseTypes = [
 
 export const exercises = [
   {
-    id: uuidv4(),
+    id: "1", // uuidv4(),
     name: "t/m 10",
     type: "Optellen",
     getQuestions: () => getAdditionSums(1, 10, 20),

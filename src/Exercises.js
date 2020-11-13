@@ -1,7 +1,8 @@
 import React from "react";
-import { exerciseTypes } from "./data";
+//import { exerciseTypes } from "./data";
 
 export default function Exercises({ exercises, selectExercise }) {
+  /*
   return (
     <div>
       {exerciseTypes.map((exerciseType) => (
@@ -23,6 +24,25 @@ export default function Exercises({ exercises, selectExercise }) {
           </div>
         </div>
       ))}
+    </div>
+  );
+              */
+
+  return (
+    <div>
+      <div key="1">
+        <h3>Optellen</h3>
+        <div className="exercises">
+          <span key="2">
+            <button
+              onClick={() => selectExercise("1")}
+              className={`exercise-button variant-1}`}
+            >
+              Onder 10
+            </button>
+          </span>
+        </div>
+      </div>
     </div>
   );
 }
