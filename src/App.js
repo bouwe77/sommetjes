@@ -6,7 +6,6 @@ import Exercises from "./Exercises";
 function App() {
   const [selectedExerciseId, setSelectedExerciseId] = useState(null);
   const [questions, setQuestions] = useState([]);
-  const [foo, setFoo] = useState(0);
 
   useEffect(() => {
     async function fetch() {
@@ -29,12 +28,6 @@ function App() {
     <div className="container">
       <header className="header">
         <div className="logo">Sommetjes</div>
-        <button
-          onClick={() => setFoo(foo + 1)}
-          className="disable-dbl-tap-zoom"
-        >
-          Foo {foo}
-        </button>
         <div className="nav">
           {/*
           <button className="button-as-link">inloggen</button>

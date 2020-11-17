@@ -1,4 +1,5 @@
 import React, { useEffect, useState } from "react";
+import Button from "./Button";
 import { exerciseTypes, getExercises } from "./data";
 
 export default function Exercises({ selectExercise }) {
@@ -23,12 +24,12 @@ export default function Exercises({ selectExercise }) {
                 .filter((x) => x.type === exerciseType)
                 .map((exercise, index) => (
                   <span key={exerciseType + exercise.id}>
-                    <button
+                    <Button
                       onClick={() => selectExercise(exercise.id)}
                       className={`exercise-button variant-${(index % 5) + 1}`}
                     >
                       {exercise.name}
-                    </button>
+                    </Button>
                   </span>
                 ))}
             </div>

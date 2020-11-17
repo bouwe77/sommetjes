@@ -1,4 +1,5 @@
 import React, { useCallback, useState } from "react";
+import Button from "./Button";
 import { useKeyPress } from "./hooks/useKeyPress";
 
 export default function NumberPad({ setNumber, clear }) {
@@ -17,22 +18,24 @@ export default function NumberPad({ setNumber, clear }) {
     <>
       {["1", "2", "3", "4", "5", "6", "7", "8", "9"].map((number, index) => (
         <span key={number}>
-          <Button onClick={() => setNumber(number)}>{number}</Button>
+          <NumberButton onClick={() => setNumber(number)}>
+            {number}
+          </NumberButton>
           {(index + 1) % 3 === 0 && <br />}
         </span>
       ))}
-      <Button style={{ visibility: "hidden" }}>0</Button>
-      <Button onClick={() => setNumber("0")}>0</Button>
-      <Button onClick={clear}>wis</Button>
+      <NumberButton style={{ visibility: "hidden" }}>0</NumberButton>
+      <NumberButton onClick={() => setNumber("0")}>0</NumberButton>
+      <NumberButton onClick={clear}>wis</NumberButton>
     </>
   );
 }
 
-function Button(props) {
+function NumberButton(props) {
   return (
-    <button className="number-button" {...props}>
+    <Button className="number-button" {...props}>
       {props.children}
-    </button>
+    </Button>
   );
 }
 

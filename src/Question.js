@@ -1,4 +1,5 @@
 import React, { useEffect, useState } from "react";
+import Button from "./Button";
 import CorrectOrIncorrect from "./CorrectOrIncorrect";
 import NumberPad, { useNumberConcatenater } from "./NumberPad";
 
@@ -36,9 +37,9 @@ export default function Question({ question, answerGiven }) {
         <NumberPad setNumber={concatenateNumber} clear={clearNumber} />
 
         <div>
-          <button className="ok-button" onClick={submitAnswer}>
+          <Button className="ok-button" onClick={submitAnswer}>
             OK
-          </button>
+          </Button>
         </div>
       </div>
     </>
