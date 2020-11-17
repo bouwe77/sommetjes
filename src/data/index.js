@@ -1,176 +1,138 @@
-import {
-  getMultiplicationTable,
-  getAdditionSums,
-  getSubtractionSums,
-  //  getAdditionAndSubtractionSums,
-} from "../calculations";
-
-//TODO Optellen met 2 getallen onder de 10 waarbij het totaal boven die 10 is...`
+import additionsUnder10 from "./additions_under_10";
+import subtractionsUnder10 from "./subtractions_under_10";
+import tables from "./tables";
+import additionsBetween10And20 from "./additions_between_10_20";
 
 export const exerciseTypes = [
   "Optellen",
   "Aftrekken",
-  //  "Optellen en aftrekken",
+  "Optellen en aftrekken",
   "Tafels",
 ];
 
-export const exercises = [
+const exercises = [
   {
-    id: "1", // uuidv4(),
+    id: "1",
     name: "t/m 10",
     type: "Optellen",
-    getQuestions: () => getAdditionSums(1, 10, 20),
+    fetch: async () => await getAdditionsUnder10(),
+  },
+  {
+    id: "1a",
+    name: "10 t/m 20",
+    type: "Optellen",
+    fetch: async () => await getAdditionsBetween10And20(),
   },
   {
     id: "2",
-    name: "t/m 20",
-    type: "Optellen",
-    getQuestions: () => getAdditionSums(5, 20, 10, 20),
-  },
-  {
-    id: "3",
     name: "t/m 10",
     type: "Aftrekken",
-    getQuestions: () => getSubtractionSums(1, 10, 20),
+    fetch: async () => await getSubtractionsUnder10(),
   },
   {
-    id: "4",
-    name: "t/m 20",
-    type: "Aftrekken",
-    getQuestions: () => getSubtractionSums(5, 20, 10, 20),
+    id: "2a",
+    name: "t/m 10",
+    type: "Optellen en aftrekken",
+    fetch: async () => {
+      const additions = await getAdditionsUnder10();
+      const subtractions = await getSubtractionsUnder10();
+      return [...additions, ...subtractions];
+    },
   },
-  // {
-  //   id: uuidv4(),
-  //   name: "t/m 20",
-  //   type: "Optellen en aftrekken",
-  //   getQuestions: () => getAdditionAndSubtractionSums(1, 20, 2, 20),
-  // },
-  // {
-  //   id: uuidv4(),
-  //   name: "t/m 20",
-  //   type: "Optellen en aftrekken",
-  //   getQuestions: () => getAdditionSums(5, 20, 10, 20),
-  // },
-  {
-    id: "5",
-    name: "1",
-    type: "Tafels",
-    getQuestions: () => getMultiplicationTable(1, 12, 20),
-  },
-  //{
-  //   id: "6",
-  //   name: "2",
-  //   type: "Tafels",
-  //   getQuestions: () => getMultiplicationTable(2, 12, 20),
-  // },
-  // {
-  //   id: "7",
-  //   name: "3",
-  //   type: "Tafels",
-  //   getQuestions: () => getMultiplicationTable(3, 12, 20),
-  // },
-  /*
-  {
-    id: "8",
-    name: "4",
-    type: "Tafels",
-    getQuestions: () => getMultiplicationTable(4, 12, 20),
-  },
-  {
-    id: "9",
-    name: "5",
-    type: "Tafels",
-    getQuestions: () => getMultiplicationTable(5, 12, 20),
-  },
+  { id: "3", name: "1", type: "Tafels", fetch: async () => await getTables(1) },
+  { id: "4", name: "2", type: "Tafels", fetch: async () => await getTables(2) },
+  { id: "5", name: "3", type: "Tafels", fetch: async () => await getTables(3) },
+  { id: "6", name: "4", type: "Tafels", fetch: async () => await getTables(4) },
+  { id: "7", name: "5", type: "Tafels", fetch: async () => await getTables(5) },
+  { id: "8", name: "6", type: "Tafels", fetch: async () => await getTables(6) },
+  { id: "9", name: "7", type: "Tafels", fetch: async () => await getTables(7) },
   {
     id: "10",
-    name: "6",
+    name: "8",
     type: "Tafels",
-    getQuestions: () => getMultiplicationTable(6, 12, 20),
+    fetch: async () => await getTables(8),
   },
   {
     id: "11",
-    name: "7",
+    name: "9",
     type: "Tafels",
-    getQuestions: () => getMultiplicationTable(7, 12, 20),
+    fetch: async () => await getTables(9),
   },
   {
     id: "12",
-    name: "8",
+    name: "10",
     type: "Tafels",
-    getQuestions: () => getMultiplicationTable(8, 12, 20),
+    fetch: async () => await getTables(10),
   },
   {
     id: "13",
-    name: "9",
+    name: "11",
     type: "Tafels",
-    getQuestions: () => getMultiplicationTable(9, 12, 20),
+    fetch: async () => await getTables(11),
   },
   {
     id: "14",
-    name: "10",
-    type: "Tafels",
-    getQuestions: () => getMultiplicationTable(10, 12, 20),
-  },
-  {
-    id: "15",
-    name: "11",
-    type: "Tafels",
-    getQuestions: () => getMultiplicationTable(11, 12, 20),
-  },
-  {
-    id: "16",
     name: "12",
     type: "Tafels",
-    getQuestions: () => getMultiplicationTable(12, 12, 20),
+    fetch: async () => await getTables(12),
   },
-  {
-    id: "17",
-    name: "13",
-    type: "Tafels",
-    getQuestions: () => getMultiplicationTable(13, 12, 20),
-  },
-  {
-    id: "18",
-    name: "14",
-    type: "Tafels",
-    getQuestions: () => getMultiplicationTable(14, 12, 20),
-  },
-  {
-    id: "19",
-    name: "15",
-    type: "Tafels",
-    getQuestions: () => getMultiplicationTable(15, 12, 20),
-  },
-  {
-    id: "20",
-    name: "16",
-    type: "Tafels",
-    getQuestions: () => getMultiplicationTable(16, 12, 20),
-  },
-  {
-    id: "21",
-    name: "17",
-    type: "Tafels",
-    getQuestions: () => getMultiplicationTable(17, 12, 20),
-  },
-  {
-    id: "22",
-    name: "18",
-    type: "Tafels",
-    getQuestions: () => getMultiplicationTable(18, 12, 20),
-  },
-  {
-    id: "23",
-    name: "19",
-    type: "Tafels",
-    getQuestions: () => getMultiplicationTable(19, 12, 20),
-  },
-  {
-    id: "24",
-    name: "20",
-    type: "Tafels",
-    getQuestions: () => getMultiplicationTable(20, 12, 20),
-  },
-*/
 ];
+
+export const getExercises = function () {
+  return new Promise((resolve, _) => {
+    resolve(exercises);
+  });
+};
+
+export const getQuestions = async function (exerciseId) {
+  const exercise = exercises.find((x) => x.id === exerciseId);
+
+  const questions = await exercise.fetch();
+
+  const howMany = 20;
+
+  const selectedQuestions = shuffleArray(questions).slice(0, howMany);
+
+  return new Promise((resolve, _) => {
+    resolve(selectedQuestions);
+  });
+};
+
+function getAdditionsUnder10() {
+  return new Promise((resolve, _) => {
+    resolve(additionsUnder10);
+  });
+}
+
+function getAdditionsBetween10And20() {
+  return new Promise((resolve, _) => {
+    resolve(additionsBetween10And20);
+  });
+}
+
+function getSubtractionsUnder10() {
+  return new Promise((resolve, _) => {
+    resolve(subtractionsUnder10);
+  });
+}
+
+function getTables(number) {
+  return new Promise((resolve, _) => {
+    resolve(tables[number]);
+  });
+}
+
+/**
+ * Shuffles the array and returns a new one.
+ * @param {array} array The array to shuffle.
+ * @returns A shuffled array.
+ */
+function shuffleArray(array) {
+  const shuffled = [...array];
+  for (let i = shuffled.length - 1; i > 0; i--) {
+    const j = Math.floor(Math.random() * (i + 1));
+    [shuffled[i], shuffled[j]] = [shuffled[j], shuffled[i]];
+  }
+
+  return shuffled;
+}

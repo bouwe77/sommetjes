@@ -1,7 +1,17 @@
-import React from "react";
-import { exerciseTypes } from "./data";
+import React, { useEffect, useState } from "react";
+import { exerciseTypes, getExercises } from "./data";
 
-export default function Exercises({ exercises, selectExercise }) {
+export default function Exercises({ selectExercise }) {
+  const [exercises, setExercises] = useState([]);
+
+  useEffect(() => {
+    async function fetch() {
+      const exercises = await getExercises();
+      setExercises(exercises);
+    }
+    fetch();
+  }, []);
+
   return (
     <div>
       {exerciseTypes.map((exerciseType) => (

@@ -1,19 +1,19 @@
 import React, { useEffect, useState } from "react";
+import { getQuestions } from "./data";
 import Exercise from "./Exercise";
 import Exercises from "./Exercises";
-
-import { exercises } from "./data";
 
 function App() {
   const [selectedExerciseId, setSelectedExerciseId] = useState(null);
   const [questions, setQuestions] = useState([]);
 
   useEffect(() => {
+    async function fetch() {
+      const questions = await getQuestions(selectedExerciseId);
+      setQuestions(questions);
+    }
     if (!selectedExerciseId) return;
-    const questions = exercises
-      .find((x) => x.id === selectedExerciseId)
-      .getQuestions();
-    setQuestions(questions);
+    fetch();
   }, [selectedExerciseId]);
 
   function selectExercise(id) {
@@ -42,7 +42,7 @@ function App() {
           quit={deselectExercise}
         />
       ) : (
-        <Exercises exercises={exercises} selectExercise={selectExercise} />
+        <Exercises selectExercise={selectExercise} />
       )}
 
       <footer>
