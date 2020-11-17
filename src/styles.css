@@ -246,3 +246,7 @@ footer hr {
 .bonus-emoji {
   font-size: 50px;
 }
+
+.disable-dbl-tap-zoom {
+  touch-action: manipulation;
+}

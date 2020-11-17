@@ -29,7 +29,12 @@ function App() {
     <div className="container">
       <header className="header">
         <div className="logo">Sommetjes</div>
-        <button onClick={() => setFoo(foo + 1)}>Foo {foo}</button>
+        <button
+          onClick={() => setFoo(foo + 1)}
+          className="disable-dbl-tap-zoom"
+        >
+          Foo {foo}
+        </button>
         <div className="nav">
           {/*
           <button className="button-as-link">inloggen</button>
