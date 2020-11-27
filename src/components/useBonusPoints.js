@@ -1,5 +1,5 @@
 import { useCallback, useState } from "react";
-import useInterval from "./useInterval";
+import useInterval from "./shared/useInterval";
 
 export default function useBonusPoints(points, timeLimitInSeconds) {
   const [bonusPoints, setBonusPoints] = useState(points);

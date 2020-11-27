@@ -1,24 +1,31 @@
 import React, { useEffect, useState } from "react";
-import useInterval from "./hooks/useInterval";
-import useLocalStorage from "./hooks/useLocalStorage";
+import useInterval from "./shared/useInterval";
+import useLocalStorage from "./shared/useLocalStorage";
 import Question from "./Question";
 import ExerciseFinished from "./ExerciseFinished";
-import useBonusPoints from "./hooks/useBonusPoints";
+import useBonusPoints from "./useBonusPoints";
+import Button from "./shared/Button";
+import { getQuestions } from "../data";
 
-export default function Exercise({ name, questions, quit }) {
-  const [currentQuestionIndex, setCurrentQuestionIndex] = useLocalStorage(
-    "currentExerciseIndex",
-    0
-  );
-  const [answerResultTimeout, setAnswerResultTimeout] = useState(null);
-  const [finished, setFinished] = useState(false);
-  const [results, setResults] = useState({
+function getInitialResultsState(questions) {
+  return {
     correct: 0,
     incorrect: 0,
     bonus1: 0,
     bonus2: 0,
     total: questions.length,
-  });
+  };
+}
+
+export default function Exercise({ exerciseId, howManyQuestions, quit }) {
+  const [currentQuestionIndex, setCurrentQuestionIndex] = useLocalStorage(
+    "currentExerciseIndex",
+    0
+  );
+  const [questions, setQuestions] = useState([]);
+  const [answerResultTimeout, setAnswerResultTimeout] = useState(null);
+  const [finished, setFinished] = useState(false);
+  const [results, setResults] = useState();
   const [bonus5Seconds, resetBonus5Seconds] = useBonusPoints(1, 5);
   const [bonus10Seconds, resetBonus10Seconds] = useBonusPoints(1, 10);
 
@@ -26,11 +33,15 @@ export default function Exercise({ name, questions, quit }) {
   const canGoNext = indexNr < questions.length - 1;
   const goToNext = () => setCurrentQuestionIndex(indexNr + 1);
 
-  //TODO Heb ik niet teveel useEffects?
-
   useEffect(() => {
+    async function fetch() {
+      const questions = await getQuestions(exerciseId, howManyQuestions);
+      setQuestions(questions);
+      setResults(getInitialResultsState(questions));
+    }
+    fetch();
     setCurrentQuestionIndex(0);
-  }, [setCurrentQuestionIndex, name]);
+  }, [exerciseId, howManyQuestions, setCurrentQuestionIndex]);
 
   useEffect(() => {
     resetBonus5Seconds();
@@ -64,34 +75,22 @@ export default function Exercise({ name, questions, quit }) {
   function tryAgain() {
     setFinished(false);
     setCurrentQuestionIndex(0);
-    setResults({
-      correct: 0,
-      incorrect: 0,
-      bonus1: 0,
-      bonus2: 0,
-      total: questions.length,
-    });
+    setResults(getInitialResultsState(questions));
   }
 
   return (
-    <div>
-      {/*
-      <div className="exercise-title">
-        <h1>{name}</h1>
-      </div>
-    */}
-
+    <>
       {finished ? (
         <div>
           <ExerciseFinished results={results} />
 
           <div className="exercise-footer">
-            <button className="button-as-link" onClick={tryAgain}>
+            <Button className="button-as-link" onClick={tryAgain}>
               Deze oefening opnieuw
-            </button>
-            <button className="button-as-link" onClick={quit}>
+            </Button>
+            <Button className="button-as-link" onClick={quit}>
               Andere oefening kiezen
-            </button>
+            </Button>
           </div>
         </div>
       ) : (
@@ -101,12 +100,12 @@ export default function Exercise({ name, questions, quit }) {
             answerGiven={answerGiven}
           />
           <div className="exercise-footer">
-            <button className="button-as-link" onClick={quit}>
+            <Button className="button-as-link" onClick={quit}>
               Andere oefening kiezen
-            </button>
+            </Button>
           </div>
         </div>
       )}
-    </div>
+    </>
   );
 }

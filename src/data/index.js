@@ -84,12 +84,12 @@ export const getExercises = function () {
   });
 };
 
-export const getQuestions = async function (exerciseId) {
+export const getQuestions = async function (exerciseId, howMany) {
   const exercise = exercises.find((x) => x.id === exerciseId);
 
   const questions = await exercise.fetch();
 
-  const howMany = 20;
+  if (!howMany || isNaN(howMany)) howMany = 20;
 
   const selectedQuestions = shuffleArray(questions).slice(0, howMany);
 

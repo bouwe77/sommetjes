@@ -1,6 +1,6 @@
-import React, { useCallback, useState } from "react";
-import Button from "./Button";
-import { useKeyPress } from "./hooks/useKeyPress";
+import React from "react";
+import Button from "../shared/Button";
+import { useKeyPress } from "./useKeyPress";
 
 export default function NumberPad({ setNumber, clear }) {
   useKeyPress("1", () => setNumber("1"));
@@ -37,28 +37,4 @@ function NumberButton(props) {
       {props.children}
     </Button>
   );
-}
-
-export function useNumberConcatenater(cb) {
-  const [numberAsString, setNumberAsString] = useState(null);
-
-  function concatenateNumber(number) {
-    const newNumberAsString = `${
-      numberAsString ? numberAsString : ""
-    }${number}`;
-
-    // Validate is numeric and is max 6 characters long.
-    if (isNaN(parseFloat(newNumberAsString))) return;
-    if (newNumberAsString.length > 6) return;
-
-    setNumberAsString(newNumberAsString);
-    cb(newNumberAsString);
-  }
-
-  const clearNumber = useCallback(() => {
-    setNumberAsString(null);
-    cb(null);
-  }, [cb]);
-
-  return { concatenateNumber, clearNumber };
 }

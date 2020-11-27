@@ -3,7 +3,7 @@ import React from "react";
 export default function ExerciseFinished({ results }) {
   return (
     <div className="results">
-      Goed gedaan!
+      {results.correct > 0 ? "Goed gedaan!" : "Klaar!"}
       <br />
       <br />
       <h1>
