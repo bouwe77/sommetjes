@@ -21,10 +21,12 @@ function App() {
   return (
     <div className="container">
       <Header>
-        <Settings
-          howManyQuestions={settings.howManyQuestions}
-          saveHowManyQuestions={saveHowManyQuestions}
-        />
+        {!selectedExerciseId && (
+          <Settings
+            howManyQuestions={settings.howManyQuestions}
+            saveHowManyQuestions={saveHowManyQuestions}
+          />
+        )}
       </Header>
 
       {selectedExerciseId ? (
