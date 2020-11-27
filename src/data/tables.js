@@ -1,3 +1,5 @@
+//TODO Normaliseren naar 1 lijst unieke tafels met een index op beide nummers?
+
 export default {
   1: [
     { question: "1 x 1", answer: "1" },

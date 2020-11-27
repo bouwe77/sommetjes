@@ -2,12 +2,14 @@ import additionsUnder10 from "./additions_under_10";
 import subtractionsUnder10 from "./subtractions_under_10";
 import tables from "./tables";
 import additionsBetween10And20 from "./additions_between_10_20";
+import divisions from "./divisions";
 
 export const exerciseTypes = [
   "Optellen",
   "Aftrekken",
   "Optellen en aftrekken",
   "Tafels",
+  "Delen",
 ];
 
 const exercises = [
@@ -76,6 +78,18 @@ const exercises = [
     type: "Tafels",
     fetch: async () => await getTables(12),
   },
+  {
+    id: "15",
+    name: "1 t/m 12",
+    type: "Tafels",
+    fetch: async () => await getAllTables(),
+  },
+  {
+    id: "16",
+    name: "1 t/m 12",
+    type: "Delen",
+    fetch: async () => await getAllDivisions(),
+  },
 ];
 
 export const getExercises = function () {
@@ -119,6 +133,22 @@ function getSubtractionsUnder10() {
 function getTables(number) {
   return new Promise((resolve, _) => {
     resolve(tables[number]);
+  });
+}
+
+function getAllTables() {
+  return new Promise((resolve, _) => {
+    let allTables = [];
+    for (let number = 1; number <= 12; number++) {
+      allTables = allTables.concat(tables[number]);
+    }
+    resolve(allTables);
+  });
+}
+
+function getAllDivisions() {
+  return new Promise((resolve, _) => {
+    resolve(divisions);
   });
 }
 
