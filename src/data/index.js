@@ -103,9 +103,21 @@ export const getQuestions = async function (exerciseId, howMany) {
 
   const questions = await exercise.fetch();
 
-  if (!howMany || isNaN(howMany)) howMany = 20;
+  let selectedQuestions = [];
 
-  const selectedQuestions = shuffleArray(questions).slice(0, howMany);
+  if (howMany <= questions.length) {
+    const shuffledQuestions = shuffleArray(questions);
+    selectedQuestions = shuffledQuestions.slice(0, howMany);
+  } else {
+    let howManyLeft = howMany;
+    while (howManyLeft > 0) {
+      const shuffledQuestions = shuffleArray(questions);
+      selectedQuestions = selectedQuestions.concat(
+        shuffledQuestions.slice(0, howManyLeft)
+      );
+      howManyLeft = howMany - selectedQuestions.length;
+    }
+  }
 
   return new Promise((resolve, _) => {
     resolve(selectedQuestions);

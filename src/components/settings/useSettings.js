@@ -1,6 +1,6 @@
 import useLocalStorage from "../shared/useLocalStorage";
 
-const defaultHowManyQuestions = 3;
+const defaultHowManyQuestions = 10;
 
 export default function useSettings() {
   const [howManyQuestions, setHowManyQuestions] = useLocalStorage(
