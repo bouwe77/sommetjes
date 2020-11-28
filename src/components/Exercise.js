@@ -31,6 +31,7 @@ export default function Exercise({ exerciseId, howManyQuestions, quit }) {
 
   const indexNr = Number(currentQuestionIndex);
   const canGoNext = indexNr < questions.length - 1;
+  console.log(canGoNext);
   const goToNext = () => setCurrentQuestionIndex(indexNr + 1);
 
   useEffect(() => {
