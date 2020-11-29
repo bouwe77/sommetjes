@@ -96,6 +96,9 @@ export default function Exercise({ exerciseId, howManyQuestions, quit }) {
         </div>
       ) : (
         <div>
+          <div style={{ textAlign: "center" }}>
+            som {Number(currentQuestionIndex) + 1} van {questions.length}
+          </div>
           <Question
             question={questions[currentQuestionIndex]}
             answerGiven={answerGiven}

@@ -4,6 +4,8 @@ import tables from "./tables";
 import additionsBetween10And20 from "./additions_between_10_20";
 import divisions from "./divisions";
 import storySums from "./storySums";
+import additionsPlus10 from "./additions_plus_10";
+import subtractionsMinus10 from "./subtractions_minus_10";
 
 export const exerciseTypes = [
   //"Verhaaltjes",
@@ -34,10 +36,22 @@ const exercises = [
     fetch: async () => await getAdditionsBetween10And20(),
   },
   {
+    id: "1b",
+    name: "+ 10",
+    type: "Optellen",
+    fetch: async () => await getAdditionsPlus10(),
+  },
+  {
     id: "2",
     name: "t/m 10",
     type: "Aftrekken",
     fetch: async () => await getSubtractionsUnder10(),
+  },
+  {
+    id: "2f",
+    name: "- 10",
+    type: "Aftrekken",
+    fetch: async () => await getSubtractionsMinus10(),
   },
   {
     id: "2a",
@@ -153,9 +167,21 @@ function getAdditionsBetween10And20() {
   });
 }
 
+function getAdditionsPlus10() {
+  return new Promise((resolve, _) => {
+    resolve(additionsPlus10);
+  });
+}
+
 function getSubtractionsUnder10() {
   return new Promise((resolve, _) => {
     resolve(subtractionsUnder10);
+  });
+}
+
+function getSubtractionsMinus10() {
+  return new Promise((resolve, _) => {
+    resolve(subtractionsMinus10);
   });
 }
 
