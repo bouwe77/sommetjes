@@ -1,6 +1,6 @@
 import React from "react";
 import Button from "../shared/Button";
-import { useKeyPress } from "./useKeyPress";
+import { useKeyPress } from "../shared/useKeyPress";
 
 export default function NumberPad({ setNumber, clear }) {
   useKeyPress("1", () => setNumber("1"));

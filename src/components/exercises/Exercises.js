@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from "react";
-import Button from "./shared/Button";
-import { exerciseTypes, getExercises } from "../data";
+import Button from "../shared/Button";
+import { exerciseTypes, getExercises } from "../../data";
 
 export default function Exercises({ selectExercise }) {
   const [exercises, setExercises] = useState([]);

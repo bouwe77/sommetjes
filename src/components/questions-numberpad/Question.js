@@ -1,8 +1,8 @@
 import React, { useEffect, useState } from "react";
-import Button from "./shared/Button";
-import CorrectOrIncorrect from "./CorrectOrIncorrect";
-import NumberPad from "./numbers/NumberPad";
-import useNumberConcatenater from "./numbers/useNumberConcatenater";
+import Button from "../shared/Button";
+import CorrectOrIncorrect from "../shared/CorrectOrIncorrect";
+import NumberPad from "./NumberPad";
+import useNumberConcatenater from "./useNumberConcatenater";
 
 export default function Question({ question, answerGiven }) {
   const [answered, setAnswered] = useState(false);

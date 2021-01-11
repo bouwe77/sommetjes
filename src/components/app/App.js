@@ -1,6 +1,6 @@
 import React, { useState } from "react";
-import Exercise from "../Exercise";
-import Exercises from "../Exercises";
+import Exercise from "../exercises/Exercise";
+import Exercises from "../exercises/Exercises";
 import Settings from "../settings/Settings";
 import useSettings from "../settings/useSettings";
 import Footer from "./Footer";

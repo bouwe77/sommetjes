@@ -22,25 +22,14 @@ export default function ExerciseFinished({ results }) {
         <br />
         <b>Dit heb je allemaal gewonnen:</b>
         <br />
-        {[...Array(results.bonus1)].map((_, index) => (
+        {results.rewards.map((reward, index) => (
           <span
             key={index}
             role="img"
             aria-label="sushi"
-            className="bonus-emoji"
+            className="reward-emoji"
           >
-            🍱{" "}
-          </span>
-        ))}
-        <br />
-        {[...Array(results.bonus2)].map((_, index) => (
-          <span
-            key={index}
-            role="img"
-            aria-label="sushi"
-            className="bonus-emoji"
-          >
-            🍦{" "}
+            {reward}{" "}
           </span>
         ))}
         <br />
@@ -49,7 +38,7 @@ export default function ExerciseFinished({ results }) {
             key={index}
             role="img"
             aria-label="vies"
-            className="bonus-emoji"
+            className="reward-emoji"
           >
             💩{" "}
           </span>

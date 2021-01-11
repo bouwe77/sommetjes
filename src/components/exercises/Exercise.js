@@ -1,18 +1,18 @@
 import React, { useEffect, useState } from "react";
-import useInterval from "./shared/useInterval";
-import useLocalStorage from "./shared/useLocalStorage";
-import Question from "./Question";
+import useInterval from "../shared/useInterval";
+import useLocalStorage from "../shared/useLocalStorage";
+import Question from "../questions-numberpad/Question";
 import ExerciseFinished from "./ExerciseFinished";
-import useBonusPoints from "./useBonusPoints";
-import Button from "./shared/Button";
-import { getQuestions } from "../data";
+import Button from "../shared/Button";
+import { getQuestions } from "../../data";
+import useTimer from "../shared/useTimer";
+import useReward from "../shared/useReward";
 
 function getInitialResultsState(questions) {
   return {
     correct: 0,
     incorrect: 0,
-    bonus1: 0,
-    bonus2: 0,
+    rewards: [],
     total: questions.length,
   };
 }
@@ -26,12 +26,11 @@ export default function Exercise({ exerciseId, howManyQuestions, quit }) {
   const [answerResultTimeout, setAnswerResultTimeout] = useState(null);
   const [finished, setFinished] = useState(false);
   const [results, setResults] = useState();
-  const [bonus5Seconds, resetBonus5Seconds] = useBonusPoints(1, 5);
-  const [bonus10Seconds, resetBonus10Seconds] = useBonusPoints(1, 10);
 
+  const { secondsElapsed, resetTimer, stopTimer } = useTimer();
+  const reward = useReward(secondsElapsed);
   const indexNr = Number(currentQuestionIndex);
   const canGoNext = indexNr < questions.length - 1;
-  console.log(canGoNext);
   const goToNext = () => setCurrentQuestionIndex(indexNr + 1);
 
   useEffect(() => {
@@ -45,9 +44,12 @@ export default function Exercise({ exerciseId, howManyQuestions, quit }) {
   }, [exerciseId, howManyQuestions, setCurrentQuestionIndex]);
 
   useEffect(() => {
-    resetBonus5Seconds();
-    resetBonus10Seconds();
-  }, [currentQuestionIndex, resetBonus5Seconds, resetBonus10Seconds]);
+    if (finished) stopTimer();
+  }, [finished, stopTimer]);
+
+  useEffect(() => {
+    resetTimer();
+  }, [currentQuestionIndex, resetTimer]);
 
   useInterval(() => {
     if (canGoNext) {
@@ -63,8 +65,7 @@ export default function Exercise({ exerciseId, howManyQuestions, quit }) {
     const updatedResults = { ...results };
 
     if (isCorrect) {
-      updatedResults.bonus1 = results.bonus1 + bonus5Seconds;
-      updatedResults.bonus2 = results.bonus2 + bonus10Seconds;
+      if (reward) updatedResults.rewards = [...results.rewards, reward];
       updatedResults.correct = results.correct + 1;
     } else updatedResults.incorrect = results.incorrect + 1;
 
@@ -97,7 +98,7 @@ export default function Exercise({ exerciseId, howManyQuestions, quit }) {
       ) : (
         <div>
           <div style={{ textAlign: "center" }}>
-            som {Number(currentQuestionIndex) + 1} van {questions.length}
+            som {indexNr + 1} van {questions.length}
           </div>
           <Question
             question={questions[currentQuestionIndex]}

@@ -3,12 +3,10 @@ import subtractionsUnder10 from "./subtractions_under_10";
 import tables from "./tables";
 import additionsBetween10And20 from "./additions_between_10_20";
 import divisions from "./divisions";
-import storySums from "./storySums";
 import additionsPlus10 from "./additions_plus_10";
 import subtractionsMinus10 from "./subtractions_minus_10";
 
 export const exerciseTypes = [
-  //"Verhaaltjes",
   "Optellen",
   "Aftrekken",
   "Optellen en aftrekken",
@@ -17,12 +15,6 @@ export const exerciseTypes = [
 ];
 
 const exercises = [
-  {
-    id: "888",
-    name: "Test",
-    type: "Verhaaltjes",
-    fetch: async () => await getStorySums(),
-  },
   {
     id: "1",
     name: "t/m 10",
@@ -138,22 +130,16 @@ export const getQuestions = async function (exerciseId, howMany) {
         shuffledQuestions.slice(0, howManyLeft)
       );
       howManyLeft = howMany - selectedQuestions.length;
-      console.log(howManyLeft);
+      //console.log(howManyLeft);
     }
   }
 
-  console.log(selectedQuestions);
+  //console.log(selectedQuestions);
 
   return new Promise((resolve, _) => {
     resolve(selectedQuestions);
   });
 };
-
-function getStorySums() {
-  return new Promise((resolve, _) => {
-    resolve(storySums);
-  });
-}
 
 function getAdditionsUnder10() {
   return new Promise((resolve, _) => {
