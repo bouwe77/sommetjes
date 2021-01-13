@@ -130,11 +130,8 @@ export const getQuestions = async function (exerciseId, howMany) {
         shuffledQuestions.slice(0, howManyLeft)
       );
       howManyLeft = howMany - selectedQuestions.length;
-      //console.log(howManyLeft);
     }
   }
-
-  //console.log(selectedQuestions);
 
   return new Promise((resolve, _) => {
     resolve(selectedQuestions);
