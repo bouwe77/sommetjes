@@ -7,14 +7,33 @@ import Button from "../shared/Button";
 import { getQuestions } from "../../data";
 import useTimer from "../shared/useTimer";
 import useReward from "../shared/useReward";
+import CorrectOrIncorrect from "../shared/CorrectOrIncorrect";
 
-function getInitialResultsState(questions) {
+function getInitialResultsState(howManyQuestions) {
   return {
     correct: 0,
     incorrect: 0,
     rewards: [],
-    total: questions.length,
+    total: howManyQuestions,
   };
+}
+
+function useQuestion(exerciseId, howManyQuestions, indexNr) {
+  const [questions, setQuestions] = useState([]);
+
+  useEffect(() => {
+    async function fetch() {
+      const questions = await getQuestions(exerciseId, howManyQuestions);
+      let index = 1;
+      const questionsWithIndexNr = questions.map((q) => {
+        return { ...q, nr: index++ };
+      });
+      setQuestions(questionsWithIndexNr);
+    }
+    fetch();
+  }, [exerciseId, howManyQuestions]);
+
+  return questions[indexNr];
 }
 
 export default function Exercise({ exerciseId, howManyQuestions, quit }) {
@@ -22,46 +41,48 @@ export default function Exercise({ exerciseId, howManyQuestions, quit }) {
     "currentExerciseIndex",
     0
   );
-  const [questions, setQuestions] = useState([]);
+  const indexNr = Number(currentQuestionIndex);
+
+  const question = useQuestion(exerciseId, howManyQuestions, indexNr);
+
   const [answerResultTimeout, setAnswerResultTimeout] = useState(null);
-  const [finished, setFinished] = useState(false);
+  const [exerciseFinished, setExerciseFinished] = useState(false);
   const [results, setResults] = useState();
+  const [answerStatus, setAnswerStatus] = useState(null);
 
   const { secondsElapsed, resetTimer, stopTimer } = useTimer();
   const reward = useReward(secondsElapsed);
-  const indexNr = Number(currentQuestionIndex);
-  const canGoNext = indexNr < questions.length - 1;
+
+  const canGoNext = indexNr < howManyQuestions - 1;
   const goToNext = () => setCurrentQuestionIndex(indexNr + 1);
 
   useEffect(() => {
-    async function fetch() {
-      const questions = await getQuestions(exerciseId, howManyQuestions);
-      setQuestions(questions);
-      setResults(getInitialResultsState(questions));
-    }
-    fetch();
+    setResults(getInitialResultsState(howManyQuestions));
     setCurrentQuestionIndex(0);
   }, [exerciseId, howManyQuestions, setCurrentQuestionIndex]);
 
   useEffect(() => {
-    if (finished) stopTimer();
-  }, [finished, stopTimer]);
+    if (exerciseFinished) stopTimer();
+  }, [exerciseFinished, stopTimer]);
 
   useEffect(() => {
     resetTimer();
-  }, [currentQuestionIndex, resetTimer]);
+  }, [indexNr, resetTimer]);
 
   useInterval(() => {
+    setAnswerStatus(null);
+    setAnswerResultTimeout(null);
+
     if (canGoNext) {
       goToNext();
     } else {
-      setFinished(true);
+      setExerciseFinished(true);
     }
-
-    setAnswerResultTimeout(null);
   }, answerResultTimeout);
 
-  function answerGiven(isCorrect) {
+  function reportCorrectOrIncorrect(isCorrect) {
+    setAnswerStatus(isCorrect ? "correct" : "incorrect");
+
     const updatedResults = { ...results };
 
     if (isCorrect) {
@@ -75,14 +96,14 @@ export default function Exercise({ exerciseId, howManyQuestions, quit }) {
   }
 
   function tryAgain() {
-    setFinished(false);
+    setExerciseFinished(false);
     setCurrentQuestionIndex(0);
-    setResults(getInitialResultsState(questions));
+    setResults(getInitialResultsState(howManyQuestions));
   }
 
   return (
     <>
-      {finished ? (
+      {exerciseFinished ? (
         <div>
           <ExerciseFinished results={results} />
 
@@ -96,20 +117,29 @@ export default function Exercise({ exerciseId, howManyQuestions, quit }) {
           </div>
         </div>
       ) : (
-        <div>
-          <div style={{ textAlign: "center" }}>
-            som {indexNr + 1} van {questions.length}
+        <>
+          {answerStatus && (
+            <CorrectOrIncorrect isCorrect={answerStatus === "correct"} />
+          )}
+          <div>
+            <div style={{ textAlign: "center" }}>
+              {question && (
+                <>
+                  som {question.nr} van {howManyQuestions}
+                </>
+              )}
+            </div>
+            <Question
+              question={question}
+              reportCorrectOrIncorrect={reportCorrectOrIncorrect}
+            />
+            <div className="exercise-footer">
+              <Button className="button-as-link" onClick={quit}>
+                Andere oefening kiezen
+              </Button>
+            </div>
           </div>
-          <Question
-            question={questions[currentQuestionIndex]}
-            answerGiven={answerGiven}
-          />
-          <div className="exercise-footer">
-            <Button className="button-as-link" onClick={quit}>
-              Andere oefening kiezen
-            </Button>
-          </div>
-        </div>
+        </>
       )}
     </>
   );
