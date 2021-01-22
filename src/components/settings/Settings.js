@@ -10,11 +10,6 @@ export default function Settings({ howManyQuestions, saveHowManyQuestions }) {
     howManyQuestions
   );
 
-  function change(event) {
-    const theValue = event.target.value;
-    setUpdatedHowManyQuestions(theValue);
-  }
-
   function cancel() {
     setUpdatedHowManyQuestions(howManyQuestions);
     setOpen(false);
@@ -44,7 +39,9 @@ export default function Settings({ howManyQuestions, saveHowManyQuestions }) {
               <input
                 type="text"
                 value={updatedHowManyQuestions}
-                onChange={change}
+                onChange={(event) =>
+                  setUpdatedHowManyQuestions(event.currentTarget.value)
+                }
                 className={`${styles["settings-input"]} ${styles["disable-dbl-tap-zoom"]}`}
                 inputMode="numeric"
                 maxLength="2"

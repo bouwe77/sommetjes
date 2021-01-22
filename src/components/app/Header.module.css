@@ -2,6 +2,7 @@
   display: flex;
   background-color: #20063bff;
   width: 100%;
+  border-radius: 0px 0px 5px 5px;
 }
 
 .logo {
