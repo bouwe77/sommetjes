@@ -1,6 +1,7 @@
 import React from "react";
 import Button from "../shared/Button";
 import { useKeyPress } from "../shared/useKeyPress";
+import styles from "./NumberPad.module.css";
 
 export default function NumberPad({ setNumber, clear }) {
   useKeyPress("1", () => setNumber("1"));
@@ -33,7 +34,7 @@ export default function NumberPad({ setNumber, clear }) {
 
 function NumberButton(props) {
   return (
-    <Button className="number-button" {...props}>
+    <Button className={styles["number-button"]} {...props}>
       {props.children}
     </Button>
   );

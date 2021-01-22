@@ -1,0 +1,22 @@
+.header {
+  display: flex;
+  background-color: #20063bff;
+  width: 100%;
+}
+
+.logo {
+  font-family: "The Girl Next Door";
+  color: white;
+  font-size: 30px;
+  width: 150px;
+}
+
+.logo:hover {
+  text-decoration: none;
+}
+
+.nav {
+  text-align: right;
+  flex: 1; /* which means: grow to rest of container */
+  padding: 10px 0px;
+}

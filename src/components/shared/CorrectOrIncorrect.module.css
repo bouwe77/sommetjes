@@ -1,0 +1,14 @@
+.correct,
+.incorrect {
+  text-align: center;
+  font-size: 30px;
+  margin: 30px;
+}
+
+.correct {
+  color: #62c370ff;
+}
+
+.incorrect {
+  color: #cc3363ff;
+}

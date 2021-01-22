@@ -1,0 +1,9 @@
+/* CSS grid generated with https://cssgrid-generator.netlify.app */
+.exercises {
+  text-align: center;
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  grid-template-rows: repeat(1, 1fr);
+  grid-column-gap: 10px;
+  grid-row-gap: 10px;
+}

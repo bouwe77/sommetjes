@@ -1,0 +1,13 @@
+.button-as-link {
+  color: #62c370ff;
+  background: none !important;
+  border: none;
+  padding: 0 !important;
+  text-decoration: none;
+  cursor: pointer;
+}
+
+.button-as-link:hover {
+  text-decoration: underline;
+  cursor: hand;
+}

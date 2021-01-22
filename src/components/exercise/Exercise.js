@@ -3,11 +3,12 @@ import useInterval from "../shared/useInterval";
 import useLocalStorage from "../shared/useLocalStorage";
 import Question from "../questions-numberpad/Question";
 import ExerciseFinished from "./ExerciseFinished";
-import Button from "../shared/Button";
 import { getQuestions } from "../../data";
 import useTimer from "../shared/useTimer";
 import useReward from "../shared/useReward";
 import CorrectOrIncorrect from "../shared/CorrectOrIncorrect";
+import styles from "./Exercise.module.css";
+import LinkButton from "../shared/LinkButton";
 
 function getInitialResultsState(howManyQuestions) {
   return {
@@ -101,46 +102,40 @@ export default function Exercise({ exerciseId, howManyQuestions, quit }) {
     setResults(getInitialResultsState(howManyQuestions));
   }
 
-  return (
-    <>
-      {exerciseFinished ? (
-        <div>
-          <ExerciseFinished results={results} />
+  if (exerciseFinished) {
+    return (
+      <div>
+        <ExerciseFinished results={results} />
 
-          <div className="exercise-footer">
-            <Button className="button-as-link" onClick={tryAgain}>
-              Deze oefening opnieuw
-            </Button>
-            <Button className="button-as-link" onClick={quit}>
-              Andere oefening kiezen
-            </Button>
-          </div>
+        <div className={styles["exercise-footer"]}>
+          <LinkButton className={styles["space-right"]} onClick={tryAgain}>
+            Deze oefening opnieuw
+          </LinkButton>
+          <LinkButton onClick={quit}>Andere oefening kiezen</LinkButton>
         </div>
-      ) : (
-        <>
-          {answerStatus && (
-            <CorrectOrIncorrect isCorrect={answerStatus === "correct"} />
-          )}
-          <div>
-            <div style={{ textAlign: "center" }}>
-              {question && (
-                <>
-                  som {question.nr} van {howManyQuestions}
-                </>
-              )}
-            </div>
-            <Question
-              question={question}
-              reportCorrectOrIncorrect={reportCorrectOrIncorrect}
-            />
-            <div className="exercise-footer">
-              <Button className="button-as-link" onClick={quit}>
-                Andere oefening kiezen
-              </Button>
-            </div>
-          </div>
-        </>
+      </div>
+    );
+  }
+
+  return (
+    <div className={styles["exercise"]}>
+      {answerStatus && (
+        <CorrectOrIncorrect isCorrect={answerStatus === "correct"} />
       )}
-    </>
+      <div className={styles["progress"]}>
+        {question && (
+          <>
+            som {question.nr} van {howManyQuestions}
+          </>
+        )}
+      </div>
+      <Question
+        question={question}
+        reportCorrectOrIncorrect={reportCorrectOrIncorrect}
+      />
+      <div className={styles["exercise-footer"]}>
+        <LinkButton onClick={quit}>Andere oefening kiezen</LinkButton>
+      </div>
+    </div>
   );
 }

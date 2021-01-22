@@ -1,0 +1,38 @@
+.question,
+.answer {
+  text-align: center;
+}
+
+.question {
+  height: 70px;
+  font-size: 60px;
+  margin-bottom: 5px;
+  padding: 0;
+}
+
+.answer {
+  height: 50px;
+  border: 1px solid #9ad1d4ff;
+  margin: auto;
+  padding-bottom: 30px;
+  width: 230px;
+}
+
+.answer {
+  color: #9ad1d4ff;
+  font-size: 60px;
+}
+
+.answer-input {
+  text-align: center;
+}
+
+.ok-button {
+  width: 250px;
+  height: 70px;
+  font-size: 30px;
+  background-color: #9ad1d4ff;
+  border: 0;
+  margin: 10px;
+  border-radius: 5px;
+}

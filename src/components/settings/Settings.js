@@ -1,6 +1,8 @@
 import React, { useState } from "react";
 import Button from "../shared/Button";
+import LinkButton from "../shared/LinkButton";
 import Modal from "../shared/Modal";
+import styles from "./Settings.module.css";
 
 export default function Settings({ howManyQuestions, saveHowManyQuestions }) {
   const [open, setOpen] = useState(false);
@@ -24,41 +26,44 @@ export default function Settings({ howManyQuestions, saveHowManyQuestions }) {
     setOpen(false);
   }
 
-  if (open)
-    return (
-      <Modal>
-        <div className="settings-form">
-          <div className="settings-row">
-            <span className="settings-label">Aantal sommen</span>{" "}
-            <input
-              type="text"
-              value={updatedHowManyQuestions}
-              onChange={change}
-              className="settings-input disable-dbl-tap-zoom"
-              inputMode="numeric"
-              maxLength="2"
-            />
-          </div>
-          <div className="settings-row">
-            <Button onClick={save} className="settings-button">
-              OK
-            </Button>
-            <Button
-              className="settings-button settings-cancel-button"
-              onClick={cancel}
-            >
-              Annuleren
-            </Button>
-          </div>
-        </div>
-      </Modal>
-    );
-
   return (
     <>
-      <Button className="button-as-link" onClick={() => setOpen(true)}>
+      <LinkButton
+        className={styles["settings-link"]}
+        style={{ visibility: open ? "hidden" : "visible" }}
+        onClick={() => setOpen(true)}
+      >
         Instellingen
-      </Button>
+      </LinkButton>
+
+      {open && (
+        <Modal>
+          <div className={styles["settings-form"]}>
+            <div className={styles["settings-row"]}>
+              <span className={styles["settings-label"]}>Aantal sommen</span>{" "}
+              <input
+                type="text"
+                value={updatedHowManyQuestions}
+                onChange={change}
+                className={`${styles["settings-input"]} ${styles["disable-dbl-tap-zoom"]}`}
+                inputMode="numeric"
+                maxLength="2"
+              />
+            </div>
+            <div className={styles["settings-row"]}>
+              <Button onClick={save} className={styles["settings-button"]}>
+                OK
+              </Button>
+              <Button
+                className={`${styles["settings-button"]} ${styles["settings-cancel-button"]}`}
+                onClick={cancel}
+              >
+                Annuleren
+              </Button>
+            </div>
+          </div>
+        </Modal>
+      )}
     </>
   );
 }

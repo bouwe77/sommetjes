@@ -1,0 +1,14 @@
+footer {
+  text-align: right;
+  margin: 20px 0px;
+}
+
+footer hr {
+  border-top: 1px solid #20063bff;
+  width: 100%;
+}
+
+.footer-text {
+  font-size: 12px;
+  padding-right: 10px;
+}

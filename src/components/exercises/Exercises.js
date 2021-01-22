@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from "react";
-import Button from "../shared/Button";
+import ExerciseButton from "./ExerciseButton";
 import { exerciseTypes, getExercises } from "../../data";
+import styles from "./Exercises.module.css";
 
 export default function Exercises({ selectExercise }) {
   const [exercises, setExercises] = useState([]);
@@ -14,28 +15,28 @@ export default function Exercises({ selectExercise }) {
   }, []);
 
   return (
-    <div>
+    <>
       {exerciseTypes.map((exerciseType) => (
         <div key={exerciseType}>
           <h3>{exerciseType}</h3>
           {
-            <div className="exercises">
+            <div className={styles.exercises}>
               {exercises
                 .filter((x) => x.type === exerciseType)
                 .map((exercise, index) => (
                   <span key={exercise.id}>
-                    <Button
+                    <ExerciseButton
+                      index={index}
                       onClick={() => selectExercise(exercise.id)}
-                      className={`exercise-button variant-${(index % 5) + 1}`}
                     >
                       {exercise.name}
-                    </Button>
+                    </ExerciseButton>
                   </span>
                 ))}
             </div>
           }
         </div>
       ))}
-    </div>
+    </>
   );
 }

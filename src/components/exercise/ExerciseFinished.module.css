@@ -1,0 +1,12 @@
+.results {
+  margin: 10px;
+  text-align: center;
+}
+
+.results h2 {
+  display: inline;
+}
+
+.reward-emoji {
+  font-size: 50px;
+}

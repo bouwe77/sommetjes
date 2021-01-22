@@ -1,10 +1,11 @@
 import React, { useState } from "react";
-import Exercise from "../exercises/Exercise";
+import Exercise from "../exercise/Exercise";
 import Exercises from "../exercises/Exercises";
 import Settings from "../settings/Settings";
 import useSettings from "../settings/useSettings";
 import Footer from "./Footer";
 import Header from "./Header";
+import styles from "./App.module.css";
 
 function App() {
   const [selectedExerciseId, setSelectedExerciseId] = useState(null);
@@ -19,8 +20,8 @@ function App() {
   }
 
   return (
-    <div className="container">
-      <Header>
+    <div className={styles.container}>
+      <Header goHome={deselectExercise}>
         {!selectedExerciseId && (
           <Settings
             howManyQuestions={settings.howManyQuestions}
@@ -29,15 +30,17 @@ function App() {
         )}
       </Header>
 
-      {selectedExerciseId ? (
-        <Exercise
-          exerciseId={selectedExerciseId}
-          howManyQuestions={settings.howManyQuestions}
-          quit={deselectExercise}
-        />
-      ) : (
-        <Exercises selectExercise={selectExercise} />
-      )}
+      <div className={styles.main}>
+        {selectedExerciseId ? (
+          <Exercise
+            exerciseId={selectedExerciseId}
+            howManyQuestions={settings.howManyQuestions}
+            quit={deselectExercise}
+          />
+        ) : (
+          <Exercises selectExercise={selectExercise} />
+        )}
+      </div>
 
       <Footer />
     </div>

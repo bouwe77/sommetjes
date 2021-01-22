@@ -1,8 +1,9 @@
 import React from "react";
+import styles from "./ExerciseFinished.module.css";
 
 export default function ExerciseFinished({ results }) {
   return (
-    <div className="results">
+    <div className={styles["results"]}>
       {results.correct > 0 ? "Goed gedaan!" : "Klaar!"}
       <br />
       <br />
@@ -27,7 +28,7 @@ export default function ExerciseFinished({ results }) {
             key={index}
             role="img"
             aria-label="sushi"
-            className="reward-emoji"
+            className={styles["reward-emoji"]}
           >
             {reward}{" "}
           </span>
@@ -38,7 +39,7 @@ export default function ExerciseFinished({ results }) {
             key={index}
             role="img"
             aria-label="vies"
-            className="reward-emoji"
+            className={styles["reward-emoji"]}
           >
             💩{" "}
           </span>
