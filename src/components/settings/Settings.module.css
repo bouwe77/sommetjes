@@ -31,6 +31,7 @@
   text-align: center;
   border: 1px solid lightgray;
   font-size: 30px;
+  touch-action: manipulation;
 }
 
 .settings-link {

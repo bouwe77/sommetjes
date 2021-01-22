@@ -42,7 +42,7 @@ export default function Settings({ howManyQuestions, saveHowManyQuestions }) {
                 onChange={(event) =>
                   setUpdatedHowManyQuestions(event.currentTarget.value)
                 }
-                className={`${styles["settings-input"]} ${styles["disable-dbl-tap-zoom"]}`}
+                className={styles["settings-input"]}
                 inputMode="numeric"
                 maxLength="2"
               />
