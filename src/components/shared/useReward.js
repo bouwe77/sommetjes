@@ -8,11 +8,11 @@ export default function useReward(seconds) {
 
   useEffect(() => {
     let index;
-    if (seconds < 2) index = 0;
-    else if (seconds < 4) index = 1;
-    else if (seconds < 6) index = 2;
-    else if (seconds < 8) index = 3;
-    else if (seconds < 10) index = 4;
+    if (seconds < 3) index = 0;
+    else if (seconds < 5) index = 1;
+    else if (seconds < 7) index = 2;
+    else if (seconds < 9) index = 3;
+    else if (seconds < 11) index = 4;
     else {
       setReward(null);
       return;
