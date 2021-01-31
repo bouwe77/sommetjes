@@ -27,25 +27,25 @@ export default function ExerciseFinished({ results }) {
       <div>
         {results.gold > 0 && (
           <div>
-            Aantal vragen binnen 4 seconden goed:
+            Binnen 4 seconden goed:
             <EmojiRepeater emoji="🥇" howMany={results.gold} />
           </div>
         )}
         {results.silver > 0 && (
           <div>
-            Aantal vragen binnen 10 seconden goed:
+            Binnen 10 seconden goed:
             <EmojiRepeater emoji="🥈" howMany={results.silver} />
           </div>
         )}
         {results.bronze > 0 && (
           <div>
-            Overig aantal vragen goed:
+            Overig goed:
             <EmojiRepeater emoji="🥉" howMany={results.bronze} />
           </div>
         )}
         {results.incorrect > 0 && (
           <div>
-            Aantal vragen fout:
+            Fout:
             <EmojiRepeater emoji="💩" howMany={results.incorrect} />
           </div>
         )}

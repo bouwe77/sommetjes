@@ -6,7 +6,7 @@ export default function Footer() {
     <footer>
       <hr />
       <span className={styles["footer-text"]}>
-        gemaakt door <a href="https://twitter.com/bouwe">Bouwe</a>{" "}
+        gemaakt door <a href="https://bouwe.io">Bouwe</a>{" "}
         <span role="img" aria-label="love">
           ❤️
         </span>
