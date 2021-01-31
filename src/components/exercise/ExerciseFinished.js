@@ -1,4 +1,5 @@
 import React from "react";
+import EmojiRepeater from "./EmojiRepeater";
 import styles from "./ExerciseFinished.module.css";
 
 export default function ExerciseFinished({ results }) {
@@ -19,33 +20,36 @@ export default function ExerciseFinished({ results }) {
           </span>
         )}
       </h1>
-      <div>
-        <br />
-        <b>Dit heb je allemaal gewonnen:</b>
-        <br />
-        {results.rewards.map((reward, index) => (
-          <span
-            key={index}
-            role="img"
-            aria-label="sushi"
-            className={styles["reward-emoji"]}
-          >
-            {reward}{" "}
-          </span>
-        ))}
-        <br />
-        {[...Array(results.incorrect)].map((_, index) => (
-          <span
-            key={index}
-            role="img"
-            aria-label="vies"
-            className={styles["reward-emoji"]}
-          >
-            💩{" "}
-          </span>
-        ))}
-      </div>
+
       <br />
+      <br />
+
+      <div>
+        {results.gold > 0 && (
+          <div>
+            Aantal vragen binnen 4 seconden goed:
+            <EmojiRepeater emoji="🥇" howMany={results.gold} />
+          </div>
+        )}
+        {results.silver > 0 && (
+          <div>
+            Aantal vragen binnen 10 seconden goed:
+            <EmojiRepeater emoji="🥈" howMany={results.silver} />
+          </div>
+        )}
+        {results.bronze > 0 && (
+          <div>
+            Overig aantal vragen goed:
+            <EmojiRepeater emoji="🥉" howMany={results.bronze} />
+          </div>
+        )}
+        {results.incorrect > 0 && (
+          <div>
+            Aantal vragen fout:
+            <EmojiRepeater emoji="💩" howMany={results.incorrect} />
+          </div>
+        )}
+      </div>
     </div>
   );
 }
