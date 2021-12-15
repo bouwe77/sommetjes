@@ -1,18 +1,18 @@
-import React, { useEffect, useState } from "react";
-import ExerciseButton from "./ExerciseButton";
-import { exerciseTypes, getExercises } from "../../data";
-import styles from "./Exercises.module.css";
+import React, { useEffect, useState } from 'react'
+import ExerciseButton from './ExerciseButton'
+import { exerciseTypes, getExercises } from '../../data'
+import styles from './Exercises.module.css'
 
 export default function Exercises({ selectExercise }) {
-  const [exercises, setExercises] = useState([]);
+  const [exercises, setExercises] = useState([])
 
   useEffect(() => {
     async function fetch() {
-      const exercises = await getExercises();
-      setExercises(exercises);
+      const exercises = await getExercises()
+      setExercises(exercises)
     }
-    fetch();
-  }, []);
+    fetch()
+  }, [])
 
   return (
     <>
@@ -38,5 +38,5 @@ export default function Exercises({ selectExercise }) {
         </div>
       ))}
     </>
-  );
+  )
 }

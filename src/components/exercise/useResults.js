@@ -1,37 +1,37 @@
-import { useCallback, useState } from "react";
+import { useCallback, useState } from 'react'
 
 export function useResults(howManyQuestions) {
-  const [results, setResults] = useState();
+  const [results, setResults] = useState()
 
   function updateResults(isCorrect, secondsElapsed) {
     const updatedResults = isCorrect
       ? updateResultsForCorrectAnswer(secondsElapsed)
-      : updateResultsForIncorrectAnswer();
+      : updateResultsForIncorrectAnswer()
 
-    setResults(updatedResults);
+    setResults(updatedResults)
   }
 
   function updateResultsForCorrectAnswer(secondsElapsed) {
-    const updatedResults = { ...results };
+    const updatedResults = { ...results }
 
-    updatedResults.correct++;
-    if (secondsElapsed < 4) updatedResults.gold++;
-    else if (secondsElapsed < 10) updatedResults.silver++;
-    else updatedResults.bronze++;
+    updatedResults.correct++
+    if (secondsElapsed < 4) updatedResults.gold++
+    else if (secondsElapsed < 10) updatedResults.silver++
+    else updatedResults.bronze++
 
-    const updatedDurations = [...updatedResults.durations, secondsElapsed];
+    const updatedDurations = [...updatedResults.durations, secondsElapsed]
 
-    updatedResults.durations = updatedDurations;
+    updatedResults.durations = updatedDurations
     updatedResults.averageDuration =
-      updatedDurations.reduce((a, b) => a + b) / updatedDurations.length;
+      updatedDurations.reduce((a, b) => a + b) / updatedDurations.length
 
-    return updatedResults;
+    return updatedResults
   }
 
   function updateResultsForIncorrectAnswer() {
-    const updatedResults = { ...results };
-    updatedResults.incorrect++;
-    return updatedResults;
+    const updatedResults = { ...results }
+    updatedResults.incorrect++
+    return updatedResults
   }
 
   const resetResults = useCallback(() => {
@@ -44,9 +44,9 @@ export function useResults(howManyQuestions) {
       bronze: 0,
       durations: [],
       averageDuration: 0,
-    };
-    setResults(initialResults);
-  }, [howManyQuestions]);
+    }
+    setResults(initialResults)
+  }, [howManyQuestions])
 
-  return { results, resetResults, updateResults };
+  return { results, resetResults, updateResults }
 }

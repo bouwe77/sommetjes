@@ -1,4 +1,4 @@
-import React from "react";
+import React from 'react'
 
 export default function EmojiRepeater({ emoji, howMany }) {
   return (
@@ -8,11 +8,11 @@ export default function EmojiRepeater({ emoji, howMany }) {
           key={index}
           role="img"
           aria-label="emoji"
-          style={{ fontSize: "50px" }}
+          style={{ fontSize: '50px' }}
         >
-          {emoji}{" "}
+          {emoji}{' '}
         </span>
       ))}
     </div>
-  );
+  )
 }

@@ -1,15 +1,15 @@
-import React from "react";
-import EmojiRepeater from "./EmojiRepeater";
-import styles from "./ExerciseFinished.module.css";
+import React from 'react'
+import EmojiRepeater from './EmojiRepeater'
+import styles from './ExerciseFinished.module.css'
 
 export default function ExerciseFinished({ results }) {
   return (
-    <div className={styles["results"]}>
-      {results.correct > 0 ? "Goed gedaan!" : "Klaar!"}
+    <div className={styles['results']}>
+      {results.correct > 0 ? 'Goed gedaan!' : 'Klaar!'}
       <br />
       <br />
       <h1>
-        {results.correct} van de {results.total} goed!{" "}
+        {results.correct} van de {results.total} goed!{' '}
         {results.correct > 0 ? (
           <span role="img" aria-label="yes!!!">
             🎉
@@ -51,5 +51,5 @@ export default function ExerciseFinished({ results }) {
         )}
       </div>
     </div>
-  );
+  )
 }

@@ -1,6 +1,6 @@
-import React from "react";
-import LinkButton from "../shared/LinkButton";
-import styles from "./Header.module.css";
+import React from 'react'
+import LinkButton from '../shared/LinkButton'
+import styles from './Header.module.css'
 
 export default function Header({ children, goHome }) {
   return (
@@ -10,5 +10,5 @@ export default function Header({ children, goHome }) {
       </LinkButton>
       <div className={styles.nav}>{children} </div>
     </header>
-  );
+  )
 }
