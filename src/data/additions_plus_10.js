@@ -1,4 +1,4 @@
-const stuff = [
+export default [
   { question: '0 + 10', answer: '10' },
   { question: '1 + 10', answer: '11' },
   { question: '2 + 10', answer: '12' },
@@ -51,5 +51,3 @@ const stuff = [
   { question: '49 + 10', answer: '59' },
   { question: '50 + 10', answer: '60' },
 ]
-
-export default stuff
