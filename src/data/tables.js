@@ -1,6 +1,6 @@
 //TODO Normaliseren naar 1 lijst unieke tafels met een index op beide nummers?
 
-export default {
+const stuff = {
   1: [
     { question: "1 x 1", answer: "1" },
     { question: "1 x 1", answer: "1" },
@@ -314,3 +314,5 @@ export default {
     { question: "12 x 12", answer: "144" },
   ],
 };
+
+export default stuff;
